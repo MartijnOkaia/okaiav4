@@ -1,0 +1,21 @@
+{
+  "name": "astrov4",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/netlify": "^3.0.1",
+    "@storyblok/astro": "^3.0.0",
+    "astro": "^3.0.13",
+    "vite": "^4.4.9"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.0.1"
+  }
+}
