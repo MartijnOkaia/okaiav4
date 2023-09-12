@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^3.0.1",
+    "@astrojs/tailwind": "^5.0.0",
     "@storyblok/astro": "^3.0.0",
     "astro": "^3.0.13",
+    "tailwindcss": "^3.3.3",
     "vite": "^4.4.9"
   },
   "devDependencies": {
