@@ -26,4 +26,7 @@ module.exports = {
 		},
 	},
 	plugins: [],
+	safelist: [
+		'bg-white'
+	]
 }

@@ -1,12 +1,20 @@
 ---
 
+import { storyblokEditable } from '@storyblok/astro'
+
 const { blok } = Astro.props
 
 ---
 
-<div class="my-20">
 
-    <h2 class="text-xl">{blok.title}</h2>
+<div {...storyblokEditable(blok)} class={`py-20 bg-${blok.background}`}>
 
+    <div class="container mx-auto">
 
-</div>
+        <h2 class="text-xl max-w-[900px]">{blok.title}</h2>
+        
+        <a href={blok.button.cached_url} class="button"></a>
+
+    </div>
+
+</div> 
