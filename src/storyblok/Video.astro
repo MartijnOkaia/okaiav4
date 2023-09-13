@@ -1,0 +1,14 @@
+---
+
+const { blok } = Astro.props
+
+---
+
+<div>
+
+    <video playsinline autoplay muted class="rounded-lg">
+        <source src={blok.video.filename} type="video/mp4" />
+    </video>
+
+
+</div>

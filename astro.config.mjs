@@ -18,9 +18,14 @@ export default defineConfig({
     accessToken: env.STORYBLOK_TOKEN,
     bridge: process.env.PUBLIC_ENV !== 'production',
     components: {
-      blogPost: 'storyblok/BlogPost',
-      blogPostList: 'storyblok/BlogPostList',
-      page: 'storyblok/Page'
+      page: 'storyblok/Page',
+      work: 'storyblok/Work',
+      
+      title: 'storyblok/Title',
+      video: 'storyblok/Video',
+      list: 'storyblok/List',
+      latestWork: 'storyblok/LatestWork',
+      callToAction: 'storyblok/CallToAction',
     }
   }), tailwind()],
   vite: {
