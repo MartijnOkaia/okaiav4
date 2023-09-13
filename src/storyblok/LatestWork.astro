@@ -11,10 +11,12 @@ const { data } = await storyblokApi.get('cdn/stories', {
 })
 
 const posts = data.stories.map(story => {
+  console.log(story);
   return {
     title: story.content.title,
     date: new Date(story.published_at).toLocaleDateString("nl-NL", {dateStyle: "full"}),
     description: story.content.description,
+    image: story.content.image.filename,
     slug: story.full_slug,
   }
 })
@@ -33,8 +35,9 @@ const { blok } = Astro.props
           {posts.map(post => (
             <li class="flex-1">
               <a href={post.slug}>
-                <div class="bg-white rounded-lg p-8 hover:bg-green transition">
-                </div>
+
+                <img src={post.image} class="rounded-lg aspect-[9/12] object-cover">
+                
                 <h3 class="text-md mt-4">{post.description}</h3>
               </a>
             </li>
