@@ -3,10 +3,12 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "dev": "PUBLIC_ENV=development astro dev",
+    "build:production": "PUBLIC_ENV=production astro build",
+    "build:preview": "PUBLIC_ENV=preview astro build",
     "astro": "astro"
   },
   "dependencies": {
