@@ -5,7 +5,6 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 const storyblokApi = useStoryblokApi()
 
 const { data } = await storyblokApi.get("cdn/stories/test-post", {
-    //version: "draft",
     version: import.meta.env.DEV ? "draft" : "published",
 });
 

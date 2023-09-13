@@ -10,7 +10,6 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 export default defineConfig({
   output: process.env.PUBLIC_ENV === 'preview' ? 'server' : 'static',
   adapter: process.env.PUBLIC_ENV === 'preview' ? netlify() : undefined,
-  adapter: netlify(),
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
     bridge: process.env.PUBLIC_ENV !== 'production',
