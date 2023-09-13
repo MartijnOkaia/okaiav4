@@ -8,11 +8,12 @@ const env = loadEnv("", process.cwd(), 'STORYBLOK');
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
+  output: process.env.PUBLIC_ENV === 'preview' ? 'server' : 'static',
+  adapter: process.env.PUBLIC_ENV === 'preview' ? netlify() : undefined,
   adapter: netlify(),
   integrations: [storyblok({
     accessToken: env.STORYBLOK_TOKEN,
-    bridge: true,
+    bridge: process.env.PUBLIC_ENV !== 'production',
     components: {
       blogPost: 'storyblok/BlogPost',
       blogPostList: 'storyblok/BlogPostList',
