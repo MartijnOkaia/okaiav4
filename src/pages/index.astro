@@ -5,7 +5,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get('cdn/stories/home', {
-  version: import.meta.env.DEV ? "draft" : "published",
+  version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
 });
 const content = data.story.content;
 ---
