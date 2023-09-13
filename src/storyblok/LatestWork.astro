@@ -1,17 +1,47 @@
 ---
 
 import { storyblokEditable } from '@storyblok/astro'
+import { useStoryblokApi } from '@storyblok/astro'
+
+const storyblokApi = useStoryblokApi();
+
+const { data } = await storyblokApi.get('cdn/stories', {
+  version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
+  content_type: 'work',
+})
+
+const posts = data.stories.map(story => {
+  return {
+    title: story.content.title,
+    date: new Date(story.published_at).toLocaleDateString("nl-NL", {dateStyle: "full"}),
+    description: story.content.description,
+    slug: story.full_slug,
+  }
+})
+
+console.log(posts);
 
 const { blok } = Astro.props
 
 ---
 
-
 <div {...storyblokEditable(blok)} class="py-20">
 
     <div class="container mx-auto">
 
-        <h2 class="text-lg">Latest work</h2>
+        <h2 class="text-lg mb-8">Latest work</h2>
+
+        <ul class="flex gap-8">
+          {posts.map(post => (
+            <li class="flex-1">
+              <a href={post.slug}>
+                <div class="bg-white rounded-lg p-8 hover:bg-green transition">
+                </div>
+                <h3 class="text-md mt-4">{post.description}</h3>
+              </a>
+            </li>
+          ))}
+        </ul>
         
     </div>
 

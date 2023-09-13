@@ -16,6 +16,7 @@ module.exports = {
 			md: ['26px', '33px'],
 			lg: ['40px', '26px'],
 			xl: ['50px', '56px'],
+			xxl: ['80px', '78px'],
 		},
 		borderRadius: {
 			DEFAULT: '10px',
