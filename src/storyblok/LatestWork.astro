@@ -2,16 +2,20 @@
 
 import { storyblokEditable } from '@storyblok/astro'
 import { useStoryblokApi } from '@storyblok/astro'
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translatePath = useTranslatedPath(lang);
 
 const storyblokApi = useStoryblokApi();
 
 const { data } = await storyblokApi.get('cdn/stories', {
   version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
   content_type: 'work',
+  language: lang
 })
 
 const posts = data.stories.map(story => {
-  console.log(story);
   return {
     title: story.content.title,
     date: new Date(story.published_at).toLocaleDateString("nl-NL", {dateStyle: "full"}),
@@ -29,12 +33,12 @@ const { blok } = Astro.props
 
     <div class="container mx-auto">
 
-        <h2 class="text-lg mb-8">Latest work</h2>
+        <h2 class="text-lg mb-8">{blok.Title}</h2>
 
         <ul class="flex gap-8">
           {posts.map(post => (
             <li class="flex-1">
-              <a href={post.slug}>
+              <a href={`/werk/${post.slug}`} class={`py-20 bg-${blok.background}`}>
 
                 <img src={post.image} class="rounded-lg aspect-[9/12] object-cover">
                 

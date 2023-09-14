@@ -26,6 +26,8 @@ export default defineConfig({
       list: 'storyblok/List',
       latestWork: 'storyblok/LatestWork',
       callToAction: 'storyblok/CallToAction',
+      accordion: 'storyblok/Accordion',
+
     }
   }), tailwind()],
   vite: {

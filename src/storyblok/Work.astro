@@ -11,8 +11,13 @@ const { blok } = Astro.props
 
     <div class="container mx-auto">
 
-        <h2 class="text-xl max-w-[900px]">{blok.title}</h2>
+        <h2 class="text-xl max-w-[900px] mb-4">{blok.title}</h2>
         
+        <p class="mb-4">{blok.description}</p>
+
+        <img src={blok.image.filename} class="rounded-lg aspect-[16/9] object-cover">
+        
+
     </div>
 
-</div> 
+</div>

@@ -1,6 +1,6 @@
 ---
 
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 
 import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
@@ -31,8 +31,7 @@ const { data } = await storyblokApi.get(
   `cdn/stories/${slug === undefined ? 'home' : slug}`,
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
-    language: 'nl',
-    content_type: 'page'
+    language: 'en'
   }
 )
  
