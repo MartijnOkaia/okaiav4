@@ -4,6 +4,7 @@ import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
 //import { useStoryblokApi } from '@storyblok/astro'
 import { SEO } from "astro-seo";
 
+import { ViewTransitions } from 'astro:transitions';
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -29,7 +30,7 @@ const { title, otherSlug } = Astro.props;
 <!DOCTYPE html>
 <html lang={lang}>
     <head>
-        
+
         <SEO
         title={title}
         description="Welcome to the webiste of Okaia!"
@@ -38,6 +39,9 @@ const { title, otherSlug } = Astro.props;
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="sitemap" href="/sitemap-index.xml" />
+
+        <ViewTransitions />
+
     </head>
     <body class="bg-grey text-base">
 
