@@ -23,6 +23,7 @@ const { title, otherSlug } = Astro.props;
 
 
 ---
+
 <!DOCTYPE html>
 <html lang={lang}>
     <head>
@@ -99,3 +100,24 @@ const { title, otherSlug } = Astro.props;
     
     </body>
 </html>
+
+
+
+<script>
+    
+    import { gsap } from "gsap";
+    import { SplitText } from "gsap/SplitText";
+
+    gsap.registerPlugin(SplitText);
+
+    var tl = gsap.timeline(),
+    mySplitText = new SplitText(".animate", { type: "words,chars" }),
+    chars = mySplitText.chars;
+
+    tl.from(chars, {
+        duration: 0.4,
+        opacity: 0,
+        stagger: 0.01
+    });
+
+</script>

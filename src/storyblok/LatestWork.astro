@@ -32,7 +32,7 @@ const { blok } = Astro.props
 
     <div class="container mx-auto">
 
-        <h2 class="text-lg mb-8">{blok.Title}</h2>
+        <h2 class="animate text-lg mb-8">{blok.Title}</h2>
 
         <ul class="flex gap-8">
           {posts.map(post => (
@@ -41,7 +41,7 @@ const { blok } = Astro.props
 
                 <img src={`${post.image}/m/1000x0/smart`} class="rounded-lg aspect-[9/12] object-cover">
                 
-                <h3 class="text-md mt-4">{post.description}</h3>
+                <h3 class="animate text-md mt-4">{post.description}</h3>
               </a>
             </li>
           ))}

@@ -18,7 +18,6 @@ export default defineConfig({
     accessToken: env.STORYBLOK_TOKEN,
     bridge: process.env.PUBLIC_ENV !== 'production',
     components: {
-      config: 'storyblok/Config',
       page: 'storyblok/Page',
       work: 'storyblok/Work',
       
@@ -28,6 +27,7 @@ export default defineConfig({
       latestWork: 'storyblok/LatestWork',
       callToAction: 'storyblok/CallToAction',
       accordion: 'storyblok/Accordion',
+      slider: 'storyblok/Slider'
 
     }
   }), tailwind()],
