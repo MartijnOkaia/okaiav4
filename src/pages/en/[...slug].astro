@@ -34,9 +34,11 @@ const { slug } = Astro.params
 const { original_slug } = Astro.props
  
 const storyblokApi = useStoryblokApi()
+
+const originalSlug = process.env.PUBLIC_ENV === 'preview' ? slug : original_slug;
  
 const { data } = await storyblokApi.get(
-  `cdn/stories/${original_slug === undefined ? 'home' : original_slug}`,
+  `cdn/stories/${originalSlug === undefined ? 'home' : originalSlug}`,
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
     language: 'en'
