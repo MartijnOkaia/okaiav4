@@ -39,7 +39,7 @@ const { blok } = Astro.props
             <li class="flex-1">
               <a href={`/${post.slug}`} class={`py-20 bg-${blok.background}`}>
 
-                <img src={post.image} class="rounded-lg aspect-[9/12] object-cover">
+                <img src={`${post.image}/m/1000x0/smart`} class="rounded-lg aspect-[9/12] object-cover">
                 
                 <h3 class="text-md mt-4">{post.description}</h3>
               </a>
