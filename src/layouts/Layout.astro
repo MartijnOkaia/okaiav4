@@ -1,9 +1,20 @@
 ---
 
 import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import { useStoryblokApi } from '@storyblok/astro'
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
+
+const storyblokApi = useStoryblokApi()
+const { data } = await storyblokApi.get('cdn/stories/config', {
+  version: 'draft',
+  resolve_links: 'url',
+  language: lang
+})
+const headerMenu = data?.story?.content?.header_menu
+
+console.log(headerMenu[0].link.story)
 
 interface Props {
 	title: string;
@@ -38,17 +49,39 @@ const { title } = Astro.props;
                     </div>
                     <div class="grow-0 mr-8">
                         <ul class="flex gap-2">
-                            <li class="opacity-50"><a href="/">NL</a></li>
+                            <li class={lang === 'nl' ? '' : 'opacity-50'}><a href="/">NL</a></li>
                             <li class="opacity-50">/</li>
-                            <li class="opacity-50"><a href="/en">EN</a></li>
+                            <li class={lang === 'en' ? '' : 'opacity-50'}><a href="/en">EN</a></li>
                         </ul>
                     </div>
                     <div class="grow-0">
                         <ul class="flex gap-8">
-                            <li><a href={translatePath('/ons-werk/')}>Ons werk</a></li>
-                            <li><a href={translatePath('/diensten/')}>Diensten</a></li>
-                            <li><a href={translatePath('/cultuur/')}>Cultuur</a></li>
-                            <li><a href={translatePath('/contact/')}>Contact</a></li>
+
+                            <!-- {
+                                headerMenu.map((menu) => (
+                                  <li>
+                                    <a href={menu.link.cached_url} class="hover:text-[#50b0ae]">
+                                      {menu.link.story.name}
+                                    </a>
+                                  </li>
+                                ))
+                            } -->
+                            {lang === 'en' ? (
+                                <>
+                                    <li><a href={translatePath('/our-work')}>Our work</a></li>
+                                    <li><a href={translatePath('/services/')}>Services</a></li>
+                                    <li><a href={translatePath('/culture/')}>Culture</a></li>
+                                    <li><a href={translatePath('/contact/')}>Contact</a></li>
+                                </>
+                            ) : (
+                                <>
+                                    <li><a href={translatePath('/ons-werk')}>Ons werk</a></li>
+                                    <li><a href={translatePath('/diensten/')}>Diensten</a></li>
+                                    <li><a href={translatePath('/cultuur/')}>Cultuur</a></li>
+                                    <li><a href={translatePath('/contact/')}>Contact</a></li>
+                                </>
+                            )}
+
                         </ul>
                     </div>
                 </div>        

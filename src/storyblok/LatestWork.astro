@@ -38,7 +38,7 @@ const { blok } = Astro.props
         <ul class="flex gap-8">
           {posts.map(post => (
             <li class="flex-1">
-              <a href={`/werk/${post.slug}`} class={`py-20 bg-${blok.background}`}>
+              <a href={`/${post.slug}`} class={`py-20 bg-${blok.background}`}>
 
                 <img src={post.image} class="rounded-lg aspect-[9/12] object-cover">
                 

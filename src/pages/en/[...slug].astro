@@ -12,12 +12,13 @@ export async function getStaticPaths() {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published"
   })
   let links = data.links
+
   links = Object.values(links)
- 
+
   return links.map((link) => {
     return {
       params: {
-        slug: link.slug === 'home' ? undefined : link.slug,
+        slug: link.slug === 'home' ? undefined : link.alternates[0].path,
       },
     }
   })
