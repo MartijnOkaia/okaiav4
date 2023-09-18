@@ -6,13 +6,13 @@ import { useStoryblokApi } from '@storyblok/astro'
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 
-const storyblokApi = useStoryblokApi()
-const { data } = await storyblokApi.get('cdn/stories/config', {
-  version: 'draft',
-  resolve_links: 'url',
-  language: lang
-})
-const headerMenu = data?.story?.content?.header_menu
+// const storyblokApi = useStoryblokApi()
+// const { data } = await storyblokApi.get('cdn/stories/config', {
+//   version: 'draft',
+//   resolve_links: 'url',
+//   language: lang
+// })
+// const headerMenu = data?.story?.content?.header_menu
 
 
 interface Props {
