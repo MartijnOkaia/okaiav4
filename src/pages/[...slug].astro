@@ -21,6 +21,9 @@ export async function getStaticPaths() {
     return {
       params: {
         slug: link.slug === 'home' ? undefined : link.slug,
+      },
+      props: {
+        other_slug: link.slug === 'home' ? undefined : link.alternates[0].translated_slug,
       }
     }
   })
@@ -28,6 +31,7 @@ export async function getStaticPaths() {
 }
  
 const { slug } = Astro.params
+const { other_slug } = Astro.props
  
 const storyblokApi = useStoryblokApi()
  
@@ -43,7 +47,7 @@ const story = data.story
 ---
 
 
-<Layout title="Okaia - creative digital agency">
+<Layout title="Okaia - creative digital agency" otherSlug={other_slug}>
 
     <StoryblokComponent blok={story.content} />
     

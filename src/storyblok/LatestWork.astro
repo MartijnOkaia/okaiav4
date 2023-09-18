@@ -14,7 +14,6 @@ const { data } = await storyblokApi.get('cdn/stories', {
   language: lang
 })
 
-
 const posts = data.stories.map(story => {
   return {
     title: story.content.title,
@@ -24,9 +23,6 @@ const posts = data.stories.map(story => {
     slug: story.full_slug,
   }
 })
-
-console.log('EN HIER:', posts)
-
 
 const { blok } = Astro.props
 

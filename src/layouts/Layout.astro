@@ -19,7 +19,9 @@ interface Props {
 	title: string;
 }
 
-const { title } = Astro.props;
+const { title, otherSlug } = Astro.props;
+
+
 ---
 
 <html lang="en">
@@ -48,9 +50,13 @@ const { title } = Astro.props;
                     </div>
                     <div class="grow-0 mr-8">
                         <ul class="flex gap-2">
-                            <li class={lang === 'nl' ? '' : 'opacity-50'}><a href="/">NL</a></li>
+                            <li class={lang === 'nl' ? '' : 'opacity-50'}>
+                              <a href={otherSlug && otherSlug !== 'home' ? `/${otherSlug}` : '/'}>NL</a>
+                            </li>
                             <li class="opacity-50">/</li>
-                            <li class={lang === 'en' ? '' : 'opacity-50'}><a href="/en">EN</a></li>
+                            <li class={lang === 'en' ? '' : 'opacity-50'}>
+                              <a href={otherSlug && otherSlug !== 'home' ? `/en/${otherSlug}` : '/en'}>EN</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="grow-0">
