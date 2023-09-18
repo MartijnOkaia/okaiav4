@@ -26,6 +26,8 @@ export async function getStaticPaths() {
  
 const { slug } = Astro.params
  
+console.log(slug);
+
 const storyblokApi = useStoryblokApi()
  
 const { data } = await storyblokApi.get(
@@ -33,7 +35,7 @@ const { data } = await storyblokApi.get(
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
     language: 'nl',
-    content_type: 'work'
+    //content_type: 'work'
   }
 )
  
