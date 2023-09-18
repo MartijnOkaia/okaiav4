@@ -18,20 +18,22 @@ export async function getStaticPaths() {
   return links.map((link) => {
     return {
       params: {
-        slug: link.slug === 'home' ? undefined : link.alternates[0].path,
+        slug: link.slug === 'home' ? undefined : link.alternates[0].translated_slug,
+        original_slug: link.slug,
       },
     }
   })
 
 }
  
-const { slug } = Astro.params
-console.log(slug);
+const { slug, original_slug } = Astro.params
  
 const storyblokApi = useStoryblokApi()
  
+
+
 const { data } = await storyblokApi.get(
-  `cdn/stories/${slug === undefined ? 'home' : slug}`,
+  `cdn/stories/${original_slug === undefined ? 'home' : original_slug}`,
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
     language: 'en'

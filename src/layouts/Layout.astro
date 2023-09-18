@@ -14,7 +14,6 @@ const { data } = await storyblokApi.get('cdn/stories/config', {
 })
 const headerMenu = data?.story?.content?.header_menu
 
-console.log(headerMenu[0].link.story)
 
 interface Props {
 	title: string;
