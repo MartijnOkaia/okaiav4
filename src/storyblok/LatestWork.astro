@@ -5,7 +5,6 @@ import { useStoryblokApi } from '@storyblok/astro'
 import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const translatePath = useTranslatedPath(lang);
 
 const storyblokApi = useStoryblokApi();
 
@@ -24,6 +23,8 @@ const posts = data.stories.map(story => {
     slug: story.full_slug,
   }
 })
+
+console.log('HIERZO', posts)
 
 const { blok } = Astro.props
 
