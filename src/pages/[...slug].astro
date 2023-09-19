@@ -6,6 +6,7 @@ import { useStoryblokApi } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
  
 export async function getStaticPaths() {
+  
   const storyblokApi = useStoryblokApi()
  
   const { data } = await storyblokApi.get('cdn/links', {
@@ -38,7 +39,7 @@ const { slug } = Astro.params
 const { other_slug, original_slug } = Astro.props
  
 const storyblokApi = useStoryblokApi()
- console.log('Hallo', `cdn/stories/${original_slug ? original_slug : (slug === undefined ? 'home' : slug)}`)
+
 const { data } = await storyblokApi.get(
   `cdn/stories/${original_slug ? original_slug : (slug === undefined ? 'home' : slug)}`,
   {
@@ -51,8 +52,6 @@ const { data } = await storyblokApi.get(
 const story = data.story
 
 ---
-
-
 
 <Layout title="Okaia - creative digital agency" otherSlug={other_slug}>
 

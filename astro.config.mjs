@@ -22,16 +22,18 @@ export default defineConfig({
       accessToken: env.STORYBLOK_TOKEN,
       bridge: process.env.PUBLIC_ENV !== "production",
       components: {
+
         page: "storyblok/Page",
         work: "storyblok/Work",
 
-        title: "storyblok/Title",
-        video: "storyblok/Video",
-        list: "storyblok/List",
-        latestWork: "storyblok/LatestWork",
-        callToAction: "storyblok/CallToAction",
-        accordion: "storyblok/Accordion",
-        slider: "storyblok/Slider",
+        title: "storyblok/page/Title",
+        video: "storyblok/page/Video",
+        list: "storyblok/page/List",
+        latestWork: "storyblok/page/LatestWork",
+        callToAction: "storyblok/page/CallToAction",
+        accordion: "storyblok/page/Accordion",
+        slider: "storyblok/page/Slider",
+
       },
     }),
     robotsTxt({
