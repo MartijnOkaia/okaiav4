@@ -38,13 +38,12 @@ const storyblokApi = useStoryblokApi()
 const originalSlug = process.env.PUBLIC_ENV === 'preview' ? slug : original_slug;
 
 
- 
-
 const { data } = await storyblokApi.get(
   `cdn/stories/${originalSlug === undefined ? 'home' : originalSlug}`,
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
-    language: 'en'
+    language: 'en',
+    resolve_relations: 'latestWork.Work'
   }
 )
  

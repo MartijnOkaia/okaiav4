@@ -8,13 +8,24 @@ const lang = getLangFromUrl(Astro.url);
 
 const storyblokApi = useStoryblokApi();
 
-const { data } = await storyblokApi.get('cdn/stories', {
-  version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
-  content_type: 'work',
-  language: lang
-})
+let storiesData = [];
 
-const posts = data.stories.map(story => {
+const { blok } = Astro.props
+
+if (!blok.Work || blok.Work.length === 0) {
+  const { data } = await storyblokApi.get('cdn/stories',
+  {
+      version: process.env.PUBLIC_ENV !== 'production' ? 'draft' : 'published',
+      content_type: 'work',
+      language: lang
+  });
+  storiesData = data.stories;
+} else {
+  storiesData = blok.Work
+}
+
+
+const posts = storiesData.map(story => {
   return {
     title: story.content.title,
     date: new Date(story.published_at).toLocaleDateString("nl-NL", {dateStyle: "full"}),
@@ -23,8 +34,6 @@ const posts = data.stories.map(story => {
     slug: story.full_slug,
   }
 })
-
-const { blok } = Astro.props
 
 ---
 

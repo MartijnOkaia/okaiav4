@@ -18,28 +18,33 @@ export async function getStaticPaths() {
   return links
   .filter((link) => !link.is_folder)
   .map((link) => {
+
+    const cleanedSlug = link.slug.replace(/^landing\//, '');
     return {
       params: {
-        slug: link.slug === 'home' ? undefined : link.slug,
+        slug: cleanedSlug === 'home' ? undefined : cleanedSlug,
       },
       props: {
+        original_slug: link.slug,
         other_slug: link.slug === 'home' ? undefined : link.alternates[0].translated_slug,
       }
     }
   })
 
 }
- 
+
+
 const { slug } = Astro.params
-const { other_slug } = Astro.props
+const { other_slug, original_slug } = Astro.props
  
 const storyblokApi = useStoryblokApi()
- 
+ console.log('Hallo', `cdn/stories/${original_slug ? original_slug : (slug === undefined ? 'home' : slug)}`)
 const { data } = await storyblokApi.get(
-  `cdn/stories/${slug === undefined ? 'home' : slug}`,
+  `cdn/stories/${original_slug ? original_slug : (slug === undefined ? 'home' : slug)}`,
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
-    language: 'nl'
+    language: 'nl',
+    resolve_relations: 'latestWork.Work',
   }
 )
   
