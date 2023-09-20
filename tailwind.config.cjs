@@ -35,5 +35,9 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-  safelist: ["bg-white"],
+  safelist: [
+    "bg-white",
+    "grid-cols-2",
+    "grid-cols-3"
+  ],
 };
