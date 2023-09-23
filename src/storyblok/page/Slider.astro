@@ -4,29 +4,57 @@ import { storyblokEditable } from '@storyblok/astro'
 
 const { blok } = Astro.props
 
+
 ---
 
-<div {...storyblokEditable(blok)} class="bg-white pt-24">
+<style>
+.swiper-slide-active, .swiper-slide-active img{
+    height: 600px;
+    margin-top: 0;
+    scale: 100%;
+}
+</style>
+
+<div {...storyblokEditable(blok)} class="py-20 overflow-x-hidden">
 
     <div class="container mx-auto">
-        <swiper-container
-            slides-per-view="2"
-            grid-rows="1"
-        >
-            <swiper-slide>Slide 1</swiper-slide>
-            <swiper-slide>Slide 2</swiper-slide>
-            <swiper-slide>Slide 3</swiper-slide>
-            <swiper-slide>Slide 1</swiper-slide>
-            <swiper-slide>Slide 2</swiper-slide>
-            <swiper-slide>Slide 3</swiper-slide>
+        <swiper-container slides-per-view="2" space-between="20" slides-per-view="auto" navigation="true" loop="true" init="false">
+
+            {blok.Images && blok.Images.length > 0 && blok.Images.map(image => (
+                <swiper-slide class="w-[900px] h-[600px]" lazy="true">
+                    <img src={image.filename} class="w-[900px] h-[500px] mt-[50px] rounded-lg transition-all duration-[350ms]" loading="lazy">
+                </swiper-slide>
+            ))}            
+
         </swiper-container>
+        
     </div>
 
 </div>
+
+
 
 <script>
 
     import { register } from 'swiper/element/bundle';
     register();
+
+    const swiperEl = document.querySelector('swiper-container');
+
+    const params = {
+        injectStyles: [
+        `
+        .swiper {
+            overflow: visible !important;
+            clip-path: inset(-100vw -100vw -100vw -17px); 
+        }
+        `,
+        ],
+    };
+
+    
+    Object.assign(swiperEl, params);
+    
+    swiperEl.initialize();
     
 </script>

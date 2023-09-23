@@ -32,6 +32,9 @@ module.exports = {
       DEFAULT: "10px",
       lg: "20px",
     },
+    fontFamily: {
+      'sans': ['Okaia', 'Verdana Neue', 'Verdana', 'Arial'],
+    },
     extend: {},
   },
   plugins: [],
