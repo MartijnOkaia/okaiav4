@@ -22,7 +22,7 @@ const { blok } = Astro.props
 
             {blok.Images && blok.Images.length > 0 && blok.Images.map(image => (
                 <swiper-slide class="w-[900px] h-[600px]" lazy="true">
-                    <img src={image.filename} class="w-[900px] h-[500px] mt-[50px] rounded-lg transition-all duration-[350ms]" loading="lazy">
+                    <img src={`${image.filename}/m/1350x900/smart`} class="w-[900px] h-[500px] mt-[50px] rounded-lg transition-all duration-[350ms]" loading="lazy">
                 </swiper-slide>
             ))}            
 
