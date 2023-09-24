@@ -7,14 +7,18 @@ const { blok } = Astro.props
 ---
 
 
-<div {...storyblokEditable(blok)} class={`py-20 bg-${blok.background}`}>
+<div {...storyblokEditable(blok)} class={`title-block py-20 bg-${blok.background}`}>
 
     <div class="container mx-auto">
 
         <h2 class="animate text-xl max-w-[900px] font-[450]">{blok.title}</h2>
-        
-        <a href={blok.button.cached_url} class="button"></a>
 
     </div>
 
 </div> 
+
+<style is:global>
+    main > div:first-of-type.title-block{
+        padding-top: 10rem !important;
+    }
+</style>

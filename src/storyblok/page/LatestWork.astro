@@ -28,7 +28,6 @@ if (!blok.Work || blok.Work.length === 0) {
 const posts = storiesData.map(story => {
   return {
     title: story.content.title,
-    date: new Date(story.published_at).toLocaleDateString("nl-NL", {dateStyle: "full"}),
     description: story.content.description,
     image: story.content.image.filename,
     slug: story.full_slug,
@@ -48,9 +47,20 @@ const posts = storiesData.map(story => {
             <li class="flex-1">
               <a href={`/${post.slug}`} class={`py-20 bg-${blok.background}`}>
 
-                <img src={`${post.image}/m/1000x0/smart`} class="rounded-lg aspect-[9/12] object-cover" />
+                { blok.Columns == 3 ? (
+                  <>
+                    <img src={`${post.image}/m/630x840/smart`} lazy="true" class="rounded-lg aspect-[9/12] object-cover" />
+                    <h3 class="animate text-md mt-4">{post.description}</h3> 
+                  </>
+                ) : (
+                  <>
+                    <h3 class="animate text-md mb-4">{post.description}</h3>
+                    <img src={`${post.image}/m/840x630/smart`} lazy="true" class="rounded-lg aspect-[12/9] object-cover mb-8" />
+                  </>
+                )}
                 
-                <h3 class="animate text-md mt-4">{post.description}</h3>
+                
+
               </a>
             </li>
           ))}
