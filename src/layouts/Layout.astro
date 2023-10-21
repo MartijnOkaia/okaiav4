@@ -29,28 +29,75 @@ const { title, otherSlug } = Astro.props;
         <link rel="sitemap" href="/sitemap-index.xml" />
 
     </head>
-    <body class="bg-grey text-base">
+    <body class="text-base color-black">
 
-        <header class="fixed top-0 left-0 right-0 z-10 py-8">
+        <div id="transition-circle" class="circleItem bg-black shadow fixed top-1/2 left-1/2 w-0 z-40 h-auto rounded-full -translate-x-1/2 -translate-y-1/2 aspect-square"></div>
 
-            <div class="container mx-auto">
+        <div id="custom-cursor" class="opacity-0 border custom-cursor z-50 aspect-square w-[140px] rounded-[50%] -mt-[70px] -ml-[70px] fixed pointer-events-none flex items-center justify-center text-white scale-[0.1]" style="background-color: rgba(247, 246, 241, 0.10); backdrop-filter: blur(10px);">
+            More
+        </div>
 
-                <div class="flex content-middle">
+
+        <header class="absolute top-0 left-0 right-0 z-10 py-6">
+
+            <div class="mx-auto px-[30px] max-w-[1600px]">
+
+                <div class="flex content-middle align-center items-center">
                     <div class="grow">
                         <a href={translatePath('/')}>
-                            <svg width="86" height="25" viewBox="0 0 86 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17.7218 15.7334C17.7218 20.8291 13.6844 24.2259 8.90907 24.2259C4.13374 24.2259 0 20.8281 0 15.7334C0 10.6387 4.03746 7.27243 8.90907 7.27243C13.7807 7.27243 17.7218 10.6692 17.7218 15.7334ZM12.7864 15.7334C12.7864 13.2337 10.8959 11.5673 8.90907 11.5673C6.92228 11.5673 4.93549 13.2337 4.93549 15.7334C4.93549 18.2331 6.82599 19.8995 8.90907 19.8995C10.9921 19.8995 12.7864 18.2655 12.7864 15.7334Z" fill="black"/>
-                                <path d="M56.0916 23.747H50.9644V22.4648C49.7146 23.5859 48.0481 24.2275 45.9651 24.2275C41.7026 24.2275 38.1133 20.7983 38.1133 15.7027C38.1133 10.607 41.7026 7.1778 45.9651 7.1778C48.0481 7.1778 49.7146 7.81938 50.9644 8.94054V7.65829H56.0916V23.7461V23.747ZM50.9644 15.7036C50.9644 13.2354 49.1054 11.5374 47.0223 11.5374C44.7791 11.5374 43.1451 13.2363 43.1451 15.7036C43.1451 18.1709 44.7791 19.8697 47.0223 19.8697C49.1054 19.8697 50.9644 18.2033 50.9644 15.7036Z" fill="black"/>
-                                <path d="M65.5949 2.9163C65.5949 4.55035 64.3451 5.76872 62.6147 5.76872C60.8844 5.76872 59.666 4.55128 59.666 2.9163C59.666 1.28132 60.8835 0 62.6147 0C64.346 0 65.5949 1.34613 65.5949 2.9163Z" fill="black"/>
-                                <path d="M65.1788 7.65924H60.0508V23.747H65.1788V7.65924Z" fill="black"/>
-                                <path d="M85.9998 23.747H80.8726V22.4648C79.6228 23.5859 77.9563 24.2275 75.8733 24.2275C71.6108 24.2275 68.0215 20.7983 68.0215 15.7027C68.0215 10.607 71.6108 7.1778 75.8733 7.1778C77.9563 7.1778 79.6228 7.81938 80.8726 8.94054V7.65829H85.9998V23.7461V23.747ZM80.8726 15.7036C80.8726 13.2354 79.0136 11.5374 76.9306 11.5374C74.6873 11.5374 73.0533 13.2363 73.0533 15.7036C73.0533 18.1709 74.6873 19.8697 76.9306 19.8697C79.0136 19.8697 80.8726 18.2033 80.8726 15.7036Z" fill="black"/>
-                                <path d="M36.6564 21.3701C36.6564 23.0042 35.4066 24.2225 33.6762 24.2225C31.9459 24.2225 30.7275 23.0051 30.7275 21.3701C30.7275 19.7351 31.945 18.4538 33.6762 18.4538C35.4075 18.4538 36.6564 19.8 36.6564 21.3701Z" fill="black"/>
-                                <path d="M36.471 7.64528H31.6003C31.5984 7.68416 31.5975 7.72212 31.5956 7.761C31.4123 10.9319 28.7793 13.4557 25.5658 13.464V0.142517H20.7368V23.7358H25.5658V18.3328C31.5031 18.3236 36.345 13.5547 36.4719 7.64528H36.471Z" fill="black"/>
-                            </svg> 
+                            <svg width="119" height="34" viewBox="0 0 119 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24.522 21.7706C24.522 28.8215 18.9353 33.5217 12.3276 33.5217C5.71992 33.5217 0 28.8202 0 21.7706C0 14.7209 5.58669 10.063 12.3276 10.063C19.0685 10.063 24.522 14.7632 24.522 21.7706ZM17.6927 21.7706C17.6927 18.3117 15.0768 16.0058 12.3276 16.0058C9.57847 16.0058 6.82932 18.3117 6.82932 21.7706C6.82932 25.2294 9.44524 27.5353 12.3276 27.5353C15.21 27.5353 17.6927 25.2743 17.6927 21.7706Z" fill="black"/>
+                                <path d="M77.6143 32.859H70.5198V31.0847C68.7904 32.6361 66.4845 33.5238 63.6021 33.5238C57.7041 33.5238 52.7374 28.7788 52.7374 21.7279C52.7374 14.6769 57.7041 9.93188 63.6021 9.93188C66.4845 9.93188 68.7904 10.8197 70.5198 12.371V10.5968H77.6143V32.8577V32.859ZM70.5198 21.7291C70.5198 18.3138 67.9474 15.9644 65.065 15.9644C61.961 15.9644 59.7 18.3151 59.7 21.7291C59.7 25.1432 61.961 27.4939 65.065 27.4939C67.9474 27.4939 70.5198 25.188 70.5198 21.7291Z" fill="black"/>
+                                <path d="M90.7652 4.03533C90.7652 6.2964 89.0357 7.98227 86.6415 7.98227C84.2472 7.98227 82.5613 6.29768 82.5613 4.03533C82.5613 1.77298 84.2459 0 86.6415 0C89.037 0 90.7652 1.86266 90.7652 4.03533Z" fill="black"/>
+                                <path d="M90.1883 10.5981H83.0925V32.8591H90.1883V10.5981Z" fill="black"/>
+                                <path d="M119 32.859H111.906V31.0847C110.176 32.6361 107.87 33.5238 104.988 33.5238C99.0898 33.5238 94.1232 28.7788 94.1232 21.7279C94.1232 14.6769 99.0898 9.93188 104.988 9.93188C107.87 9.93188 110.176 10.8197 111.906 12.371V10.5968H119V32.8577V32.859ZM111.906 21.7291C111.906 18.3138 109.333 15.9644 106.451 15.9644C103.347 15.9644 101.086 18.3151 101.086 21.7291C101.086 25.1432 103.347 27.4939 106.451 27.4939C109.333 27.4939 111.906 25.188 111.906 21.7291Z" fill="black"/>
+                                <path d="M50.7217 29.5702C50.7217 31.8313 48.9923 33.5172 46.598 33.5172C44.2037 33.5172 42.5178 31.8326 42.5178 29.5702C42.5178 27.3079 44.2024 25.5349 46.598 25.5349C48.9936 25.5349 50.7217 27.3976 50.7217 29.5702Z" fill="black"/>
+                                <path d="M50.7716 10.3817H44.0319C44.0294 10.4355 44.0281 10.488 44.0255 10.5418C43.7719 14.9294 40.1286 18.4216 35.682 18.4331V0H29V32.6465H35.682V25.1702C43.8974 25.1574 50.5974 18.5587 50.7729 10.3817H50.7716Z" fill="black"/>
+                            </svg>                                
                         </a>
                     </div>
-                    <div class="grow-0 mr-8">
-                        <ul class="flex gap-2">
+                    <div class="grow-0 mr-10">
+                        <ul class="flex gap-10">
+
+                            {lang === 'en' ? (
+                                <>
+                                    <li><a href={translatePath('/work')}>Our work</a></li>
+                                    <li><a href={translatePath('/services/')}>Services</a></li>
+                                    <li><a href={translatePath('/culture/')}>Culture</a></li>
+                                    <li><a href={translatePath('/contact/')}>Contact</a></li>
+                                </>
+                            ) : (
+                                <>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/werk/')}>Ons werk</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/diensten/')}>Diensten</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/cultuur/')}>Cultuur</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/contact/')}>Contact</a></li>
+                                </>
+                            )}
+
+                        </ul>
+                    </div>
+                    <div class="grow-0 mr-4 leading-4">
+                        <a href="" class="button">
+                            <span>Menu</span>
+                        </a>
+                    </div>
+                    <div class="grow-0">
+                        <ul>
+                            { lang === 'en'  ? (
+                                <>
+                                    <li><a href={otherSlug && otherSlug !== 'home' ? `/${otherSlug}` : '/'} class="block w-[33px] aspect-square rounded-lg border text-[12px] font-medium text-center pt-[0px]">NL</a></li>
+                                </>
+                              ) : (
+                                <>
+                                    <li><a href={otherSlug && otherSlug !== 'home' ? `/en/${otherSlug}` : '/en'} class="block w-[33px] aspect-square rounded-lg border text-[12px] font-medium text-center pt-[0px]">EN</a></li>
+                                </>
+                              )}
+
+                        </ul>
+                    </div>
+                     <!-- <div class="grow-0 mr-8">
+                        <ul class="flex gap-2"> 
                             <li class={lang === 'nl' ? '' : 'opacity-50'}>
                               <a href={otherSlug && otherSlug !== 'home' ? `/${otherSlug}` : '/'}>NL</a>
                             </li>
@@ -59,39 +106,20 @@ const { title, otherSlug } = Astro.props;
                               <a href={otherSlug && otherSlug !== 'home' ? `/en/${otherSlug}` : '/en'}>EN</a>
                             </li>
                         </ul>
-                    </div>
-                    <div class="grow-0">
-                        <ul class="flex gap-8">
-
-                            {lang === 'en' ? (
-                                <>
-                                    <li><a href={translatePath('/our-work')}>Our work</a></li>
-                                    <li><a href={translatePath('/services/')}>Services</a></li>
-                                    <li><a href={translatePath('/culture/')}>Culture</a></li>
-                                    <li><a href={translatePath('/contact/')}>Contact</a></li>
-                                </>
-                            ) : (
-                                <>
-                                    <li><a href={translatePath('/ons-werk')}>Ons werk</a></li>
-                                    <li><a href={translatePath('/diensten/')}>Diensten</a></li>
-                                    <li><a href={translatePath('/cultuur/')}>Cultuur</a></li>
-                                    <li><a href={translatePath('/contact/')}>Contact</a></li>
-                                </>
-                            )}
-
-                        </ul>
-                    </div>
+                    </div> -->
                 </div>        
             </div>
         </header>
 
-	    <slot />
+        <main class="transition-circle">
+            <slot />
+        </main>
 
         <footer class="overflow-x-hidden">
-            <div class="container my-20">
-                <div class="footer-marquee uppercase text-[160px] flex w-full flex-nowrap h-[165px] gap-20 leading-none mb-20">
-                    <span class="whitespace-nowrap">Let's get the ball rolling</span>
-                    <span class="whitespace-nowrap">Let's get the ball rolling</span>
+            <div class="mx-auto px-[30px] max-w-[1600px] my-20">
+                <div class="footer-marquee uppercase text-[160px] font-medium flex w-full flex-nowrap h-[165px] gap-20 leading-none mb-20">
+                    <span class="whitespace-nowrap">Let's get the ball rolling <div class="inline-block bg-green w-[194px] h-[194px] rounded-full"></div></span>
+                    <span class="whitespace-nowrap">Let's get the ball rolling <div class="inline-block bg-green w-[194px] h-[194px] rounded-full"></div></span>
                 </div>
                 <div class="flex gap-10">
                     <div class="flex-initial">
@@ -117,37 +145,93 @@ const { title, otherSlug } = Astro.props;
 </html>
 
 <style is:global>
+
+
+    html.is-changing .transition-circle {
+        transition: all .6s ease-in-out;
+    }
+    html.is-animating .transition-circle {
+        
+    }
+    html.is-changing .circleItem{
+        transition: all .3s ease-out;
+        width: 0;
+    }
+    html.is-animating .circleItem{
+        width: 250vw;
+        transition: all .3s ease-in;
+
+    }
+
     @font-face {
 		font-family: 'Okaia';
 		src: url('/fonts/Okaia.woff') format('woff');
 		src: url('/fonts/Okaia.woff2') format('woff2');
 	}
+    .button {
+        @apply bg-green relative font-[450] text-base;
+        padding: 15px 30px 15px 30px;
+        border-radius: 23px;
+        transition: color 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .button:before {
+        content: '';
+        @apply block w-2.5 absolute top-1/2 left-[30px] z-20 -translate-y-1/2;
+        background: #212529;
+        line-height: 1;
+        border-radius: 50%;
+        transition: width 0.350s cubic-bezier(1, -0.01, 0.31, 0.99), left 0.350s cubic-bezier(1, -0.01, 0.31, 0.99);
+        aspect-ratio: 1;
+        height: auto;
+        z-index: 1;
+    }
+    .button:hover {
+        color: #fff;
+    }
+    .button span{
+        position: relative;
+        z-index: 2;
+        transition: padding 0.350s cubic-bezier(1, -0.01, 0.31, 0.99);
+        padding-left: 20px;
+    }
+    .button:hover span{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .button:hover:before {
+        width: 120%;
+        left: -10%;
+    }
 </style>  
 
 <script>
     
     import { gsap } from "gsap";
     import { SplitText } from "gsap/SplitText";
-
+    
     import { horizontalLoop } from "../scripts/marquee"
 
     gsap.registerPlugin(SplitText);
-
-    // var tl = gsap.timeline(),
-    // mySplitText = new SplitText(".animate", { type: "words,chars" }),
-    // chars = mySplitText.chars;
-
-    // tl.from(chars, {
-    //     duration: 0.4,
-    //     opacity: 0,
-    //     stagger: 0.01
-    // });
-
 
     const marqueeContainers = gsap.utils.toArray(".footer-marquee");
     marqueeContainers.forEach(container => {
         const boxes = gsap.utils.toArray(container.querySelectorAll("span"));
         const loop = horizontalLoop(boxes, { repeat: -1 });
+    });
+
+    const divBehindMouse = document.getElementById('transition-circle');
+
+    document.addEventListener('mousemove', function(event) {
+        let x = event.clientX;
+        let y = event.clientY;
+
+        divBehindMouse.style.left = x + 'px';
+        divBehindMouse.style.top = y + 'px';
     });
 
 

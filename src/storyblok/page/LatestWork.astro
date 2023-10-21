@@ -29,37 +29,53 @@ const posts = storiesData.map(story => {
     title: story.content.title,
     description: story.content.description,
     image: story.content.image.filename,
+    portrait: story.content.portraitCover,
     slug: story.full_slug,
   }
 })
 
 ---
 
-<div {...storyblokEditable(blok)} class="py-20">
+<div {...storyblokEditable(blok)} class="">
 
-    <div class="container mx-auto">
+    <div class="mx-auto px-[30px] max-w-[1600px]">
 
-        <h2 class="animate text-lg mb-8 font-[450]">{blok.Title}</h2>
+        <h2 class="animate text-lg mb-8 font-medium">{blok.Title}</h2>
 
-        <ul class={`grid grid-cols-${blok.Columns} gap-8`}>
+        <ul class={`grid grid-cols-${blok.Columns} gap-5`}>
           {posts.map(post => (
             <li class="flex-1">
-              <a href={`/${post.slug}`} class={`py-20 bg-${blok.background}`}>
-
+              <a href={`/${post.slug}`} class={`cursor-none group hover-target scale-50 py-20 bg-${blok.background}`}>
+                
                 { blok.Columns == 3 ? (
                   <>
-                    <img src={`${post.image}/m/630x840/smart`} lazy="true" class="rounded-lg aspect-[9/12] object-cover" />
-                    <h3 class="animate text-md mt-4">{post.description}</h3> 
+
+                    <div class="relative rounded-lg overflow-hidden">
+                      { post.portrait.id ? (
+                        <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto group-hover:scale-105 transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
+                          <source src={post.portrait.filename} type="video/mp4">
+                        </video>
+                      ) : (
+                        <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[450/660] object-cover group-hover:scale-105 transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" />
+                      )}
+                    </div>
+                    
+                    <div class="flex mt-4">
+                      <div class="grow-0">
+                        <div class="relative w-[10px] h-auto group-hover:w-16 group-hover:m-0 transition-all duration-[450ms] aspect-square m-3 rounded-lg overflow-hidden ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
+                          <div class="bg-black absolute top-0 left-0 w-full h-full group-hover:opacity-0 transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]"></div>
+                          <img class="w-full h-full object-cover" src="https://placebear.com/100/100" alt="" class="rounded-lg">
+                        </div>
+                      </div>
+                      <h3 class="animate text-md group-hover:ml-3 transition-all duration-[450ms] max-w-[calc(100%-75px)] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">{post.description}</h3> 
+                    </div>
                   </>
                 ) : (
                   <>
                     <h3 class="animate text-md mb-4">{post.description}</h3>
-                    <img src={`${post.image}/m/840x630/smart`} lazy="true" class="rounded-lg aspect-[12/9] object-cover mb-8" />
+                    <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] object-cover mb-8" />
                   </>
                 )}
-                
-                
-
               </a>
             </li>
           ))}
@@ -68,3 +84,58 @@ const posts = storiesData.map(story => {
     </div>
 
 </div>
+
+<script>
+  
+  import { gsap } from "gsap";
+
+  document.addEventListener('DOMContentLoaded', function() {
+
+const customCursor = document.getElementById('custom-cursor');
+
+window.addEventListener('load', function() {
+  
+  const customCursor = document.getElementById('custom-cursor');
+  
+  gsap.set(customCursor, {
+      x: e.clientX,
+      y: e.clientY,
+      opacity: 0
+    });
+  });
+
+
+document.querySelectorAll('.hover-target').forEach(el => {
+
+  document.addEventListener('mousemove', (e) => {
+    gsap.set(customCursor, {
+      x: e.clientX,
+      y: e.clientY,
+      duration: 0.3,
+      ease: 'power2.out'
+    });
+  });
+
+  el.addEventListener('mouseenter', () => {
+    gsap.to(customCursor, {
+      scale: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+      opacity: 100,
+      overwrite: true
+    });
+  });
+
+  el.addEventListener('mouseleave', () => {
+    gsap.to(customCursor, {
+      scale: 0.1, 
+      duration: 0.3,
+      ease: 'power2.out',
+      opacity: 0,
+      overwrite: true
+    });
+  });
+});
+});
+
+</script>

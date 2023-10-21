@@ -17,7 +17,7 @@ const { blok } = Astro.props
 
 <div {...storyblokEditable(blok)} class="py-20 overflow-x-hidden">
 
-    <div class="container mx-auto">
+    <div class="mx-auto px-[30px] max-w-[1600px]">
         <swiper-container slides-per-view="2" space-between="20" slides-per-view="auto" navigation="true" loop="true" init="false">
 
             {blok.Images && blok.Images.length > 0 && blok.Images.map(image => (

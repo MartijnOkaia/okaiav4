@@ -20,7 +20,8 @@ export async function getStaticPaths() {
   .map((link) => {
     return {
       params: {
-        slug: link.slug === 'home' ? undefined : link.alternates[0].translated_slug,
+        //slug: link.slug === 'home' ? undefined : link.alternates[0].translated_slug,
+        other_slug: link.slug === 'home' ? undefined : '',
       },
       props: {
         original_slug: link.slug,

@@ -9,13 +9,14 @@ module.exports = {
         sm: '600px',
         md: '728px',
         lg: '1200px',
-        xl: '1380px',
+        xl: '1600px',
       }
     },
     colors: {
       transparent: "transparent",
       current: "currentColor",
       white: "#FBFAF5",
+      black: "#212529",
       grey: "#F1EFED",
       green: "#C8FB50",
       pink: "#F2B3F9",
@@ -23,14 +24,15 @@ module.exports = {
     fontSize: {
       sm: ["14px", "20px"],
       base: ["18px", "30px"],
-      md: ["26px", "33px"],
+      md: ["24px", "33px"],
       lg: ["40px", "26px"],
-      xl: ["50px", "56px"],
+      xl: ["60px", "70px"],
       xxl: ["80px", "78px"],
     },
     borderRadius: {
       DEFAULT: "10px",
       lg: "20px",
+      full: "50%"
     },
     fontFamily: {
       'sans': ['Okaia', 'Verdana Neue', 'Verdana', 'Arial'],

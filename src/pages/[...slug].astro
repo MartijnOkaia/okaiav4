@@ -21,13 +21,15 @@ export async function getStaticPaths() {
   .map((link) => {
 
     const cleanedSlug = link.slug.replace(/^landing\//, '');
+    console.log()
     return {
       params: {
         slug: cleanedSlug === 'home' ? undefined : cleanedSlug,
       },
       props: {
         original_slug: link.slug,
-        other_slug: link.slug === 'home' ? undefined : link.alternates[0].translated_slug,
+        //other_slug: link.slug === 'home' ? undefined : 'link.alternates[0].translated_slug',
+        other_slug: link.slug === 'home' ? undefined : '',
       }
     }
   })

@@ -9,6 +9,8 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 
+import swup from '@swup/astro';
+
 import { loadEnv } from "vite";
 const env = loadEnv("", process.cwd(), "STORYBLOK");
 
@@ -46,6 +48,7 @@ export default defineConfig({
     }),
     tailwind(),
     sitemap(),
+    swup({ theme: false, globalInstance: true })
   ],
   vite: {
     plugins: [basicSsl()],
