@@ -21,7 +21,6 @@ export async function getStaticPaths() {
   .map((link) => {
 
     const cleanedSlug = link.slug.replace(/^landing\//, '');
-    console.log()
     return {
       params: {
         slug: cleanedSlug === 'home' ? undefined : cleanedSlug,
