@@ -1,6 +1,6 @@
 <div class="dragContainer w-full h-screen bg-black mt-[115px] relative">
-    <div class="dragElement aspect-square bg-pink w-[330px] rounded-lg absolute top-[10%] left-[40%] rotate-6	"></div>
-    <div class="dragElement aspect-square bg-green w-[330px] rounded-lg absolute top-[30%] left-[20%] -rotate-6"></div>
+    <div class="dragElement aspect-square bg-pink w-[330px] rounded-lg absolute top-[10%] left-[40%] rotate-6"></div>
+    <div class="dragElement aspect-square bg-green w-[330px] rounded-full absolute top-[30%] left-[20%] -rotate-6"></div>
     <div class="dragElement aspect-square bg-blue w-[330px] rounded-lg absolute top-[50%] left-[50%] rotate-12"></div>
 </div>
 
@@ -22,7 +22,14 @@ elements.forEach(element => {
     bounds: container,
     edgeResistance: 0.5,
     type: "y,x",
-    inertia: true
+    inertia: true,
+    onDrag: function() {
+      const rotation = (this.x / container.offsetWidth) * 180;
+      gsap.to(element, {
+        rotation: rotation,
+        immediateRender: false
+      });
+    }
   });
 });
 
