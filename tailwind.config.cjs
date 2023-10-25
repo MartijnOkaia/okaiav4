@@ -20,6 +20,7 @@ module.exports = {
       grey: "#F1EFED",
       green: "#C8FB50",
       pink: "#F2B3F9",
+      blue: "#0057FF"
     },
     fontSize: {
       sm: ["14px", "20px"],

@@ -28,6 +28,7 @@ export default defineConfig({
         page: "storyblok/Page",
         work: "storyblok/Work",
 
+        Cover: "storyblok/page/Cover",
         PageTitle: "storyblok/page/Title",
         VideoBlok: "storyblok/page/Video",
         ListBlok: "storyblok/page/List",

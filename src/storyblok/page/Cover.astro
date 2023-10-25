@@ -1,0 +1,30 @@
+<div class="dragContainer w-full h-screen bg-black mt-[115px] relative">
+    <div class="dragElement aspect-square bg-pink w-[330px] rounded-lg absolute top-[10%] left-[40%] rotate-6	"></div>
+    <div class="dragElement aspect-square bg-green w-[330px] rounded-lg absolute top-[30%] left-[20%] -rotate-"></div>
+    <div class="dragElement aspect-square bg-blue w-[330px] rounded-lg absolute top-[50%] left-[50%] rotate-12"></div>
+</div>
+
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/InertiaPlugin.min.js"></script>
+
+<script>
+
+import { gsap } from "gsap";
+import { Draggable } from "gsap/Draggable";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
+
+gsap.registerPlugin(Draggable,InertiaPlugin);
+
+const element = document.querySelector(".dragElement");
+const container = document.querySelector(".dragContainer");
+
+gsap.registerPlugin(Draggable);
+
+Draggable.create(element, {
+  bounds: container,
+  edgeResistance: 0.5,
+  type: "y,x",
+  inertia: true
+});
+
+
+</script>
