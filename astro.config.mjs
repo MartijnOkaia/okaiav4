@@ -49,7 +49,10 @@ export default defineConfig({
     }),
     tailwind(),
     sitemap(),
-    swup({ theme: false, globalInstance: true })
+    // swup({ 
+    //   theme: false, 
+    //   globalInstance: true 
+    // })
   ],
   vite: {
     plugins: [basicSsl()],

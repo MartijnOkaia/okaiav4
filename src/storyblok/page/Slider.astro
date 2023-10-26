@@ -41,20 +41,24 @@ const { blok } = Astro.props
 
     const swiperEl = document.querySelector('swiper-container');
 
-    const params = {
-        injectStyles: [
-        `
-        .swiper {
-            overflow: visible !important;
-            clip-path: inset(-100vw -100vw -100vw -17px); 
-        }
-        `,
-        ],
-    };
+    if(swiperEl){
+ 
+        const params = {
+            injectStyles: [
+            `
+            .swiper {
+                overflow: visible !important;
+                clip-path: inset(-100vw -100vw -100vw -17px); 
+            }
+            `,
+            ],
+        };
 
-    
-    Object.assign(swiperEl, params);
-    
-    swiperEl.initialize();
+        Object.assign(swiperEl, params);
+        
+        swiperEl.initialize();
+
+    }
+
     
 </script>
