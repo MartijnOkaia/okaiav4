@@ -37,6 +37,8 @@ export default defineConfig({
         AccordionBlok: "storyblok/page/Accordion",
         SliderBlok: "storyblok/page/Slider",
 
+        TwoImages: "storyblok/page/TwoImages",
+
       },
     }),
     robotsTxt({
