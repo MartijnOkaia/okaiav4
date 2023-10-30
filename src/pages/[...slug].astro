@@ -46,7 +46,7 @@ const { data } = await storyblokApi.get(
   {
     version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published",
     language: 'nl',
-    resolve_relations: 'LatestWork.Work',
+    //resolve_relations: 'Cases.Case',
   }
 )
   
