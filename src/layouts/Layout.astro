@@ -29,7 +29,7 @@ const { title, otherSlug } = Astro.props;
         <link rel="sitemap" href="/sitemap-index.xml" />
 
     </head>
-    <body class="text-base color-black  overflow-x-hidden">
+    <body class="text-base color-black bg-beige overflow-x-hidden">
 
         <div id="transition-circle" class="circleItem bg-black shadow fixed top-1/2 left-1/2 w-0 z-40 h-auto rounded-full -translate-x-1/2 -translate-y-1/2 aspect-square"></div>
 
@@ -40,7 +40,7 @@ const { title, otherSlug } = Astro.props;
 
         <header class="absolute top-0 left-0 right-0 z-10 py-6">
 
-            <div class="mx-auto px-[30px] max-w-[1600px]">
+            <div class="mx-auto px-[30px] ">
 
                 <div class="flex content-middle align-center items-center">
                     <div class="grow">
@@ -118,7 +118,7 @@ const { title, otherSlug } = Astro.props;
         </main>
 
         <footer class="overflow-x-hidden">
-            <div class="mx-auto px-[30px] max-w-[1600px] my-20">
+            <div class="mx-auto px-[30px]  my-20">
                 <div class="footer-marquee uppercase text-[160px] font-medium flex w-full flex-nowrap h-[165px] gap-20 leading-none mb-20">
                     <span class="whitespace-nowrap">Let's get the ball rolling <div class="inline-block bg-green w-[194px] h-[194px] rounded-full"></div></span>
                     <span class="whitespace-nowrap">Let's get the ball rolling <div class="inline-block bg-green w-[194px] h-[194px] rounded-full"></div></span>
@@ -208,6 +208,26 @@ const { title, otherSlug } = Astro.props;
     .button:hover:before {
         width: 120%;
         left: -10%;
+    }
+    .button.hollow {
+        @apply bg-transparent relative font-[450] text-base border-2;
+    }
+    .button.hollow:before {
+        /* @apply  block w-2.5 absolute top-1/2 left-[30px] z-20 -translate-y-1/2; */
+        /* width: 100%;
+        left: 0; */
+        /* top: 200%; */
+        /* height: 200%; */
+    }
+    .button.hollow span {
+        padding: 0;
+    }
+    .button.hollow:hover {
+        @apply text-white;
+    }
+    .button.hollow:hover:before {
+        /* top: 0; */
+        /* border-radius: 0; */
     }
     
 </style>  

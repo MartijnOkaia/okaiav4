@@ -6,12 +6,12 @@ const { blok } = Astro.props
 
 ---
 
-<div {...storyblokEditable(blok)} class="bg-white pt-[120px] video">
+<div {...storyblokEditable(blok)} class=" pt-[120px] video">
 
-    <div class="mx-auto px-[30px] max-w-[1600px]">
+    <div class="mx-auto px-[30px]">
 
-        <video playsinline autoplay muted class="rounded-lg">
-            <source src={blok.media.filename} type="video/mp4" />
+        <video playsinline autoplay muted class="rounded-lg w-full">
+            <source src={blok.Media.filename} type="video/mp4" />
         </video>
 
     </div>

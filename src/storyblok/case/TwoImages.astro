@@ -4,14 +4,12 @@ import { storyblokEditable } from '@storyblok/astro'
 
 const { blok } = Astro.props
 
-console.log(blok);
-
 ---
 
 
 <div {...storyblokEditable(blok)} class={`title-block py-28 bg-${blok.background}`}>
 
-    <div class="mx-auto px-[30px] max-w-[1600px]">
+    <div class="mx-auto px-[30px] ">
 
         <h1 class="animate text-xl max-w-[770px] font-medium inline-block">
             {blok.Title}

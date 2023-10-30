@@ -26,7 +26,8 @@ export default defineConfig({
       components: {
 
         page: "storyblok/Page",
-        case: "storyblok/Case",
+        work: "storyblok/Case",
+        // testimonial: "storyblok/Testimonial",
 
         Accordion: "storyblok/page/Accordion",
         CallToAction: "storyblok/page/CallToAction",
@@ -44,6 +45,8 @@ export default defineConfig({
         SliderImages: "storyblok/page/SliderImages",
         Testimonials: "storyblok/page/Testimonials",
         Text: "storyblok/page/Text",
+        Title: "storyblok/page/Title",
+        TextMedia: "storyblok/page/TextMedia",
 
         TwoImages: "storyblok/case/TwoImages",
 
