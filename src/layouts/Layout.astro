@@ -173,7 +173,8 @@ const { title, otherSlug } = Astro.props;
 
     .button {
         @apply bg-green relative font-[450] text-base;
-        padding: 15px 30px 15px 30px;
+        padding: 20px 30px 20px 30px;
+        font-size: 18px;
         border-radius: 23px;
         position: relative;
         overflow: hidden;
@@ -210,9 +211,7 @@ const { title, otherSlug } = Astro.props;
     .button:hover:before {
         top: -50%;
     }
-
-
-    
+ 
 
     .button.special:before {
         @apply block w-2.5 absolute top-1/2 left-[30px] z-20 -translate-y-1/2;
@@ -240,6 +239,10 @@ const { title, otherSlug } = Astro.props;
         left: -10%;
     }
 
+    .swiper-button-disabled {
+        opacity: .4;
+    }
+
     
 </style>  
 
@@ -258,15 +261,15 @@ const { title, otherSlug } = Astro.props;
         const loop = horizontalLoop(boxes, { repeat: -1 });
     });
 
-    const divBehindMouse = document.getElementById('transition-circle');
+    // const divBehindMouse = document.getElementById('transition-circle');
 
-    document.addEventListener('mousemove', function(event) {
-        let x = event.clientX;
-        let y = event.clientY;
+    // document.addEventListener('mousemove', function(event) {
+    //     let x = event.clientX;
+    //     let y = event.clientY;
 
-        divBehindMouse.style.left = x + 'px';
-        divBehindMouse.style.top = y + 'px';
-    });
+    //     divBehindMouse.style.left = x + 'px';
+    //     divBehindMouse.style.top = y + 'px';
+    // });
 
 
 </script>
