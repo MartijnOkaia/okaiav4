@@ -26,15 +26,16 @@ module.exports = {
     },
     fontSize: {
       sm: ["14px", "20px"],
-      base: ["18px", "30px"],
-      md: ["24px", "33px"],
-      lg: ["40px", "26px"],
-      xl: ["60px", "70px"],
+      base: ["20px", "130%"],
+      md: ["26px", "33px"],
+      lg: ["40px", "100%"],
+      xl: ["60px", "100%"],
       xxl: ["80px", "78px"],
     },
     borderRadius: {
       DEFAULT: "10px",
       lg: "20px",
+      xl: "40px",
       full: "50%"
     },
     fontFamily: {

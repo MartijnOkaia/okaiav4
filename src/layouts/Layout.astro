@@ -78,7 +78,7 @@ const { title, otherSlug } = Astro.props;
                         </ul>
                     </div>
                     <div class="grow-0 mr-4 leading-4">
-                        <a href="" class="button">
+                        <a href="" class="button special">
                             <span>Menu</span>
                         </a>
                     </div>
@@ -170,18 +170,51 @@ const { title, otherSlug } = Astro.props;
 		src: url('/fonts/Okaia.woff') format('woff');
 		src: url('/fonts/Okaia.woff2') format('woff2');
 	}
+
     .button {
         @apply bg-green relative font-[450] text-base;
         padding: 15px 30px 15px 30px;
         border-radius: 23px;
-        transition: color 0.3s ease;
         position: relative;
         overflow: hidden;
         display: inline-block;
+        transition:  0.350s cubic-bezier(1, -0.01, 0.31, 0.99);
+    }
+
+
+    .button.hollow {
+        @apply bg-transparent text-black;
+        border: 1px solid #000000;
+    }
+
+    .button span {
+        position: relative;
+        z-index: 2;
     }
 
     .button:before {
         content: '';
+        @apply bg-black block absolute;
+        width: 120%;
+        height: 200%;
+        top: 100%;
+        left: -10%;
+        right: -10%;
+        border-radius: 50%;
+        transition:  0.350s cubic-bezier(1, -0.01, 0.31, 0.99);
+        z-index: 1;
+    }
+    .button:hover {
+        color: #FFF;
+    }
+    .button:hover:before {
+        top: -50%;
+    }
+
+
+    
+
+    .button.special:before {
         @apply block w-2.5 absolute top-1/2 left-[30px] z-20 -translate-y-1/2;
         background: #212529;
         line-height: 1;
@@ -191,44 +224,22 @@ const { title, otherSlug } = Astro.props;
         height: auto;
         z-index: 1;
     }
-    .button:hover {
+    .button.special:hover {
         color: #fff;
     }
-    .button span{
-        position: relative;
-        z-index: 2;
+    .button.special span{
         transition: padding 0.350s cubic-bezier(1, -0.01, 0.31, 0.99);
         padding-left: 20px;
     }
-    .button:hover span{
+    .button.special:hover span{
         padding-left: 10px;
         padding-right: 10px;
     }
-
-    .button:hover:before {
+    .button.special:hover:before {
         width: 120%;
         left: -10%;
     }
-    .button.hollow {
-        @apply bg-transparent relative font-[450] text-base border-2;
-    }
-    .button.hollow:before {
-        /* @apply  block w-2.5 absolute top-1/2 left-[30px] z-20 -translate-y-1/2; */
-        /* width: 100%;
-        left: 0; */
-        /* top: 200%; */
-        /* height: 200%; */
-    }
-    .button.hollow span {
-        padding: 0;
-    }
-    .button.hollow:hover {
-        @apply text-white;
-    }
-    .button.hollow:hover:before {
-        /* top: 0; */
-        /* border-radius: 0; */
-    }
+
     
 </style>  
 

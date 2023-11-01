@@ -1,0 +1,108 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+---
+
+<div {...storyblokEditable(blok)} class={`title-block py-28 bg-${blok.background}`}>
+
+    <div class="mx-auto px-[30px] text-center mb-8">
+
+        <h1 class="animate text-xl max-w-[770px] font-medium text-center inline-block">
+            {blok.Title}
+        </h1>
+
+    </div>
+
+    <div class="mx-auto">
+       
+      <swiper-container class="swiper-container mb-8"  slides-per-view="auto" centered-slides="true" navigation="true" space-between="300" loop="false" init="false">
+        {blok.Cards && blok.Cards.length > 0 && blok.Cards.map((Card, index) => (
+          <swiper-slide class="w-[680px] h-100 bg-white rounded-xl px-[60px] py-[60px]" lazy="false" key={index}>
+              <div class="uppercase text-sm mb-6">{Card.Title}</div>
+              <p class="text-md">{Card.Text}</p>
+              <div class="flex justify-center">
+                <a class="button black absolute self-center -bottom-[30px]" href={Card.Button.cached_url}>
+                  <span>{Card.Button.title}</span>
+                </a>
+              </div>
+          </swiper-slide>
+          ))}
+      </swiper-container>
+
+      <div class="mx-auto px-[30px] flex items-right">
+
+        <div class="flex">
+          <div class="flex-1">
+            <div class="swiper-pagination slide-count"></div>
+          </div>
+          <div class="flex-1 flex justify-end">
+            <div class="flex flex-1 gap-4">
+              <!-- Custom Previous Button -->
+              <div class="swiper-button-prev-custom hover:bg-green bg-black text-white inline-flex w-[40px] aspect-square flex items-center justify-center rounded ">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <path d="M19 7L11 15L19 23" stroke="white" stroke-width="2"/>
+                </svg>
+              </div>
+              <!-- Custom Next Button -->
+              <div class="swiper-button-next-custom bg-black text-white inline-flex w-[40px] aspect-square flex items-center justify-center rounded">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                  <path d="M11 23L19 15L11 7" stroke="white" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+        
+    </div>
+
+</div> 
+
+
+    
+<script>
+   import { register } from 'swiper/element/bundle';
+    register();
+
+    const swiperEl = document.querySelector('swiper-container');
+
+    if(swiperEl){
+ 
+        const params = {
+          injectStyles: [
+          `
+          .swiper {
+              overflow: visible !important;
+              clip-path: inset(-100vw -100vw -100vw -17px); 
+          }
+          `,
+          ],
+          navigation: {
+            nextEl: '.swiper-button-next-custom',
+            prevEl: '.swiper-button-prev-custom',
+          },
+        };
+
+        Object.assign(swiperEl, params);
+        
+        swiperEl.initialize();
+
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
