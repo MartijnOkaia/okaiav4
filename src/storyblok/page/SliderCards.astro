@@ -1,6 +1,7 @@
 ---
 
 import { storyblokEditable } from '@storyblok/astro'
+import SliderMarqueeItem from '../../includes/SliderMarqueeItem.astro'
 
 const { blok } = Astro.props
 
@@ -16,7 +17,7 @@ const { blok } = Astro.props
 
     <div class="mx-auto relative">
        
-      <swiper-container class="swiper-container mb-16"  keyboard="true" slides-per-view="auto" centered-slides="true" navigation="true" space-between="300" loop="false" init="false">
+      <swiper-container class="swiper-container mb-16"   keyboard="true" slides-per-view="auto" centered-slides="true" free-mode="true" navigation="true" space-between="300" loop="false" init="false">
         {blok.Cards && blok.Cards.length > 0 && blok.Cards.map((Card, index) => (
           <swiper-slide class="w-[680px] h-100 bg-white rounded-xl px-[60px] py-[60px]" lazy="false" key={index}>
               <div class="uppercase text-sm mb-6">{Card.Title}</div>
@@ -30,99 +31,49 @@ const { blok } = Astro.props
           ))}
       </swiper-container>
 
-      <div class="slider-marquee  flex w-full flex-nowrap h-100 gap-20 leading-none mb-20 absolute top-1/2">
+      <div class="slider-marquee flex w-full flex-nowrap h-100 gap-20 leading-none mb-20 absolute top-1/2 -translate-y-1/2">
 
         <span>
-          <svg class="whitespace-nowrap" width="3869" height="219" viewBox="0 0 3869 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M667.657 212.57L623.577 49.2996L579.207 212.57H546.437L492.207 4.34961H523.527L563.547 164.72L607.337 4.34961H640.397L683.607 165.01L723.627 4.34961H754.947L700.717 212.57H667.657Z" fill="#212529"/>
-            <circle cx="377.5" cy="108.5" r="108.5" fill="#C8FB50"/>
-            <path d="M175.45 212.57L131.37 49.2996L87 212.57H54.23L0 4.34961H31.32L71.34 164.72L115.13 4.34961H148.19L191.4 165.01L231.42 4.34961H262.74L208.51 212.57H175.45Z" fill="#212529"/>
-            <path d="M1355.99 212.57H1324.09V4.34961H1355.99V91.3496H1461.55V4.34961H1493.45V212.57H1461.55V119.19H1355.99V212.57Z" fill="#212529"/>
-            <path d="M1185.25 216.92C1124.93 216.92 1079.4 169.65 1079.4 108.17C1079.4 46.69 1124.93 0 1185.25 0C1245.57 0 1291.1 46.69 1291.1 108.17C1291.1 169.65 1245.57 216.92 1185.25 216.92ZM1185.25 188.21C1229.33 188.21 1258.04 152.83 1258.04 108.17C1258.04 63.51 1229.33 28.71 1185.25 28.71C1141.17 28.71 1112.46 63.51 1112.46 108.17C1112.46 152.83 1141.17 188.21 1185.25 188.21Z" fill="#212529"/>
-            <ellipse cx="899.197" cy="162.75" rx="54.25" ry="54.25" transform="rotate(-90 899.197 162.75)" fill="#0057FF"/>
-            <ellipse cx="953.448" cy="109.084" rx="54.25" ry="54.8333" transform="rotate(-90 953.448 109.084)" fill="#0057FF"/>
-            <ellipse cx="1007.7" cy="162.75" rx="54.25" ry="54.25" transform="rotate(-90 1007.7 162.75)" fill="#0057FF"/>
-            <ellipse cx="899.197" cy="54.25" rx="54.25" ry="54.25" transform="rotate(-90 899.197 54.25)" fill="#0057FF"/>
-            <ellipse cx="1007.7" cy="54.25" rx="54.25" ry="54.25" transform="rotate(-90 1007.7 54.25)" fill="#0057FF"/>
-            <path d="M2052.07 210.472H2020.17V2.25195H2052.07V89.252H2157.63V2.25195H2189.53V210.472H2157.63V117.092H2052.07V210.472Z" fill="#212529"/>
-            <path d="M1957.54 210.472L1938.69 158.852H1848.79L1829.65 210.472H1797.46L1877.21 2.25195H1912.3L1991.47 210.472H1957.54ZM1894.03 37.052L1858.36 133.042H1929.12L1894.03 37.052Z" fill="#212529"/>
-            <rect x="1583.45" y="105.139" width="148.688" height="148.688" rx="15" transform="rotate(-45 1583.45 105.139)" fill="#F2B3F9"/>
-            <path d="M3024.04 180.38V208.22H2892.09V0H3022.01V27.84H2923.99V87H3013.31V114.84H2923.99V180.38H3024.04Z" fill="#212529"/>
-            <path d="M2754.02 208.22H2688.19V0H2754.02C2820.43 0 2858.71 42.34 2858.71 103.24C2858.71 163.27 2818.98 208.22 2754.02 208.22ZM2720.09 27.55V180.67H2752.57C2800.42 180.67 2826.23 151.09 2826.23 103.24C2826.23 56.26 2800.71 27.55 2752.57 27.55H2720.09Z" fill="#212529"/>
-            <path d="M2487 103H2640V129.5C2640 171.75 2605.75 206 2563.5 206V206C2521.25 206 2487 171.75 2487 129.5V103Z" fill="#C8FB50"/>
-            <path d="M2487 0H2640V26.5C2640 68.7498 2605.75 103 2563.5 103V103C2521.25 103 2487 68.7498 2487 26.5V0Z" fill="#C8FB50"/>
-            <path d="M2345.36 208.22H2279.53V0H2345.36C2411.77 0 2450.05 42.34 2450.05 103.24C2450.05 163.27 2410.32 208.22 2345.36 208.22ZM2311.43 27.55V180.67H2343.91C2391.76 180.67 2417.57 151.09 2417.57 103.24C2417.57 56.26 2392.05 27.55 2343.91 27.55H2311.43Z" fill="#212529"/>
-            <path d="M3781.7 213.57L3737.62 50.2996L3693.25 213.57H3660.48L3606.25 5.34961H3637.57L3677.59 165.72L3721.38 5.34961H3754.44L3797.65 166.01L3837.67 5.34961H3868.99L3814.76 213.57H3781.7Z" fill="#212529"/>
-            <path d="M3491.59 217.92C3431.27 217.92 3385.74 170.65 3385.74 109.17C3385.74 47.69 3431.27 1 3491.59 1C3551.91 1 3597.44 47.69 3597.44 109.17C3597.44 170.65 3551.91 217.92 3491.59 217.92ZM3491.59 189.21C3535.67 189.21 3564.38 153.83 3564.38 109.17C3564.38 64.51 3535.67 29.71 3491.59 29.71C3447.51 29.71 3418.8 64.51 3418.8 109.17C3418.8 153.83 3447.51 189.21 3491.59 189.21Z" fill="#212529"/>
-            <path d="M3554.2 109.5L3603 109.5C3603 169.879 3553.88 219.001 3493.5 219L3493.5 170.201C3527.01 170.163 3554.16 143.008 3554.2 109.5Z" fill="#F2B3F9"/>
-            <path d="M3432.8 109.5L3384 109.5C3384 169.879 3433.12 219.001 3493.5 219L3493.5 170.201C3459.99 170.163 3432.84 143.008 3432.8 109.5Z" fill="#F2B3F9"/>
-            <path d="M3432.8 109.5L3384 109.5C3384 49.1209 3433.12 -0.00102104 3493.5 7.69331e-07L3493.5 48.7995C3459.99 48.837 3432.84 75.992 3432.8 109.5Z" fill="#F2B3F9"/>
-            <path d="M3554.2 109.5L3603 109.5C3603 49.1209 3553.88 -0.00100549 3493.5 5.76362e-06L3493.5 48.7995C3527.01 48.837 3554.16 75.992 3554.2 109.5Z" fill="#F2B3F9"/>
-            <path d="M3289.49 213.57L3245.41 50.2996L3201.04 213.57H3168.27L3114.04 5.34961H3145.36L3185.38 165.72L3229.17 5.34961H3262.23L3305.44 166.01L3345.46 5.34961H3376.78L3322.55 213.57H3289.49Z" fill="#212529"/>
-            </svg>
+          <SliderMarqueeItem>
         </span>
         <span>
-          <svg class="whitespace-nowrap" width="3869" height="219" viewBox="0 0 3869 219" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M667.657 212.57L623.577 49.2996L579.207 212.57H546.437L492.207 4.34961H523.527L563.547 164.72L607.337 4.34961H640.397L683.607 165.01L723.627 4.34961H754.947L700.717 212.57H667.657Z" fill="#212529"/>
-            <circle cx="377.5" cy="108.5" r="108.5" fill="#C8FB50"/>
-            <path d="M175.45 212.57L131.37 49.2996L87 212.57H54.23L0 4.34961H31.32L71.34 164.72L115.13 4.34961H148.19L191.4 165.01L231.42 4.34961H262.74L208.51 212.57H175.45Z" fill="#212529"/>
-            <path d="M1355.99 212.57H1324.09V4.34961H1355.99V91.3496H1461.55V4.34961H1493.45V212.57H1461.55V119.19H1355.99V212.57Z" fill="#212529"/>
-            <path d="M1185.25 216.92C1124.93 216.92 1079.4 169.65 1079.4 108.17C1079.4 46.69 1124.93 0 1185.25 0C1245.57 0 1291.1 46.69 1291.1 108.17C1291.1 169.65 1245.57 216.92 1185.25 216.92ZM1185.25 188.21C1229.33 188.21 1258.04 152.83 1258.04 108.17C1258.04 63.51 1229.33 28.71 1185.25 28.71C1141.17 28.71 1112.46 63.51 1112.46 108.17C1112.46 152.83 1141.17 188.21 1185.25 188.21Z" fill="#212529"/>
-            <ellipse cx="899.197" cy="162.75" rx="54.25" ry="54.25" transform="rotate(-90 899.197 162.75)" fill="#0057FF"/>
-            <ellipse cx="953.448" cy="109.084" rx="54.25" ry="54.8333" transform="rotate(-90 953.448 109.084)" fill="#0057FF"/>
-            <ellipse cx="1007.7" cy="162.75" rx="54.25" ry="54.25" transform="rotate(-90 1007.7 162.75)" fill="#0057FF"/>
-            <ellipse cx="899.197" cy="54.25" rx="54.25" ry="54.25" transform="rotate(-90 899.197 54.25)" fill="#0057FF"/>
-            <ellipse cx="1007.7" cy="54.25" rx="54.25" ry="54.25" transform="rotate(-90 1007.7 54.25)" fill="#0057FF"/>
-            <path d="M2052.07 210.472H2020.17V2.25195H2052.07V89.252H2157.63V2.25195H2189.53V210.472H2157.63V117.092H2052.07V210.472Z" fill="#212529"/>
-            <path d="M1957.54 210.472L1938.69 158.852H1848.79L1829.65 210.472H1797.46L1877.21 2.25195H1912.3L1991.47 210.472H1957.54ZM1894.03 37.052L1858.36 133.042H1929.12L1894.03 37.052Z" fill="#212529"/>
-            <rect x="1583.45" y="105.139" width="148.688" height="148.688" rx="15" transform="rotate(-45 1583.45 105.139)" fill="#F2B3F9"/>
-            <path d="M3024.04 180.38V208.22H2892.09V0H3022.01V27.84H2923.99V87H3013.31V114.84H2923.99V180.38H3024.04Z" fill="#212529"/>
-            <path d="M2754.02 208.22H2688.19V0H2754.02C2820.43 0 2858.71 42.34 2858.71 103.24C2858.71 163.27 2818.98 208.22 2754.02 208.22ZM2720.09 27.55V180.67H2752.57C2800.42 180.67 2826.23 151.09 2826.23 103.24C2826.23 56.26 2800.71 27.55 2752.57 27.55H2720.09Z" fill="#212529"/>
-            <path d="M2487 103H2640V129.5C2640 171.75 2605.75 206 2563.5 206V206C2521.25 206 2487 171.75 2487 129.5V103Z" fill="#C8FB50"/>
-            <path d="M2487 0H2640V26.5C2640 68.7498 2605.75 103 2563.5 103V103C2521.25 103 2487 68.7498 2487 26.5V0Z" fill="#C8FB50"/>
-            <path d="M2345.36 208.22H2279.53V0H2345.36C2411.77 0 2450.05 42.34 2450.05 103.24C2450.05 163.27 2410.32 208.22 2345.36 208.22ZM2311.43 27.55V180.67H2343.91C2391.76 180.67 2417.57 151.09 2417.57 103.24C2417.57 56.26 2392.05 27.55 2343.91 27.55H2311.43Z" fill="#212529"/>
-            <path d="M3781.7 213.57L3737.62 50.2996L3693.25 213.57H3660.48L3606.25 5.34961H3637.57L3677.59 165.72L3721.38 5.34961H3754.44L3797.65 166.01L3837.67 5.34961H3868.99L3814.76 213.57H3781.7Z" fill="#212529"/>
-            <path d="M3491.59 217.92C3431.27 217.92 3385.74 170.65 3385.74 109.17C3385.74 47.69 3431.27 1 3491.59 1C3551.91 1 3597.44 47.69 3597.44 109.17C3597.44 170.65 3551.91 217.92 3491.59 217.92ZM3491.59 189.21C3535.67 189.21 3564.38 153.83 3564.38 109.17C3564.38 64.51 3535.67 29.71 3491.59 29.71C3447.51 29.71 3418.8 64.51 3418.8 109.17C3418.8 153.83 3447.51 189.21 3491.59 189.21Z" fill="#212529"/>
-            <path d="M3554.2 109.5L3603 109.5C3603 169.879 3553.88 219.001 3493.5 219L3493.5 170.201C3527.01 170.163 3554.16 143.008 3554.2 109.5Z" fill="#F2B3F9"/>
-            <path d="M3432.8 109.5L3384 109.5C3384 169.879 3433.12 219.001 3493.5 219L3493.5 170.201C3459.99 170.163 3432.84 143.008 3432.8 109.5Z" fill="#F2B3F9"/>
-            <path d="M3432.8 109.5L3384 109.5C3384 49.1209 3433.12 -0.00102104 3493.5 7.69331e-07L3493.5 48.7995C3459.99 48.837 3432.84 75.992 3432.8 109.5Z" fill="#F2B3F9"/>
-            <path d="M3554.2 109.5L3603 109.5C3603 49.1209 3553.88 -0.00100549 3493.5 5.76362e-06L3493.5 48.7995C3527.01 48.837 3554.16 75.992 3554.2 109.5Z" fill="#F2B3F9"/>
-            <path d="M3289.49 213.57L3245.41 50.2996L3201.04 213.57H3168.27L3114.04 5.34961H3145.36L3185.38 165.72L3229.17 5.34961H3262.23L3305.44 166.01L3345.46 5.34961H3376.78L3322.55 213.57H3289.49Z" fill="#212529"/>
-            </svg>
+          <SliderMarqueeItem>
         </span>
        
       </div>
 
-      <div class="mx-auto px-[30px] relative">
+      
+        
+    </div>
 
-        <div class="grid grid-cols-2 gap-4">
-          <div class="">
-            <div class="flex border-2 border-darkGrey px-[15px] rounded h-[40px] inline-flex items-center justify-center">
-              <div class="custom-pagination block"></div>
-            </div>
+    <div class="mx-auto px-[30px] relative">
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="">
+          <div class="flex border-2 border-darkGrey px-[15px] rounded h-[40px] inline-flex items-center justify-center">
+            <div class="custom-pagination block"></div>
           </div>
-          <div class="justify-self-end">
-            <div class="flex flex-1 gap-4">
-              <!-- Custom Previous Button -->
-              <div class="swiper-button-prev-custom bg-black group/swiperButton hover:bg-green text-white inline-flex w-[40px] aspect-square flex items-center justify-center rounded ">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                  <path class="group-hover/swiperButton:stroke-black" d="M19 7L11 15L19 23" stroke="white" stroke-width="2"/>
-                </svg>
-              </div>
-              <!-- Custom Next Button -->
-              <div class="swiper-button-next-custom bg-black group/swiperButton hover:bg-green text-white inline-flex w-[40px] aspect-square flex items-center justify-center rounded">
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                  <path class="group-hover/swiperButton:stroke-black" d="M11 23L19 15L11 7" stroke="white" stroke-width="2"/>
-                </svg>
-              </div>
+        </div>
+        <div class="justify-self-end">
+          <div class="flex flex-1 gap-4">
+            <!-- Custom Previous Button -->
+            <div class="swiper-button-prev-custom bg-black group/swiperButton hover:bg-green text-white inline-flex w-[40px] aspect-square flex items-center justify-center rounded ">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path class="group-hover/swiperButton:stroke-black" d="M19 7L11 15L19 23" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <!-- Custom Next Button -->
+            <div class="swiper-button-next-custom bg-black group/swiperButton hover:bg-green text-white inline-flex w-[40px] aspect-square flex items-center justify-center rounded">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                <path class="group-hover/swiperButton:stroke-black" d="M11 23L19 15L11 7" stroke="white" stroke-width="2"/>
+              </svg>
             </div>
           </div>
         </div>
-
-        
-        
       </div>
-        
+
+      
+      
     </div>
 
     

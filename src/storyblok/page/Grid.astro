@@ -13,19 +13,20 @@ const { blok } = Astro.props
     object-fit: cover;
 }
 
-.image-grid img:nth-child {
-    width: 300px;
+.image-grid img:nth-child(2) {
+    width: 500px;
     object-fit: cover;
+    transform: translateX(500px);
 }
 
 </style>
 
-<div {...storyblokEditable(blok)} class="py-20">
+<div {...storyblokEditable(blok)} class="my-34">
 
     <div class="mx-auto px-[30px] image-grid">
 
         {blok.Images && blok.Images.length > 0 && blok.Images.map((ImageItem, index) => (
-            <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" class="" />
+            <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" class="rounded" />
         ))}
         
     </div>
