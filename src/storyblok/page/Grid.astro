@@ -1,0 +1,33 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+---
+
+<style>
+
+.image-grid img {
+    width: 300px;
+    object-fit: cover;
+}
+
+.image-grid img:nth-child {
+    width: 300px;
+    object-fit: cover;
+}
+
+</style>
+
+<div {...storyblokEditable(blok)} class="py-20">
+
+    <div class="mx-auto px-[30px] image-grid">
+
+        {blok.Images && blok.Images.length > 0 && blok.Images.map((ImageItem, index) => (
+            <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" class="" />
+        ))}
+        
+    </div>
+
+</div> 

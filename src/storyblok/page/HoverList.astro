@@ -6,6 +6,36 @@ const { blok } = Astro.props
 
 ---
 
+<style>
+    .left.active video {
+        transform: scale(1) translateY(0);
+        z-index: 20;
+    } 
+
+    .left video{
+        transform: scale(0.5) translateY(10px);
+        transform-origin: center;
+        z-index: -1;
+        position: relative;
+    }
+    .left .inner {
+        opacity: 0;
+        transition-delay: .25s;
+        transform: translateY(50px);
+    }
+    .left.active .inner {
+        opacity: 1;
+        transform: translateY(0);
+    } 
+    .right-title { 
+        opacity: .3;
+    }
+    .right-title.active {
+        opacity: 1;
+    }
+
+</style>
+
 <div {...storyblokEditable(blok)} class="my-24">
 
     
@@ -13,7 +43,7 @@ const { blok } = Astro.props
 
         <hr class="mx-auto px-[30px] mb-24 opacity-10"> 
 
-        <div class="grid grid-cols-3 mb-6 items-start">
+        <div class="grid grid-cols-3 mb-6 items-start gap-10">
             <div class="flex-1">
                 <h2 class="animate text-sm uppercase ">{blok.Title}</h2>
             </div>
@@ -28,20 +58,65 @@ const { blok } = Astro.props
     </div>
 
     <div class="mx-auto px-[30px]">
-        {blok.Items && blok.Items.length > 0 && blok.Items.map(HoverListItem => (
-            <div class="grid grid-cols-2 gap-10">
-                <div class="flex-1">
-                    <p class="text-md">{HoverListItem.Text}</p>
-                    <a class="button black absolute self-center -bottom-[30px]" href={HoverListItem.Link.cached_url}>
+
+        <div class="grid grid-cols-3 gap-10">
+            <div class="left-column relative">
+              {blok.Items && blok.Items.length > 0 && blok.Items.map((HoverListItem, index) => (
+                <div class={`left h-auto  absolute ${index === 0 ? 'active' : ''}`}>
+                  <video playsinline autoplay loop muted class="rounded-lg w-full mb-4 transition-slow">
+                    <source src={HoverListItem.Media.filename} type="video/mp4" />
+                  </video>
+                  <div class="inner transition">
+                    <p class="text-base">{HoverListItem.Text}</p>
+                    <a class="button black  self-center -bottom-[30px]" href={HoverListItem.Link.cached_url}>
                         <span>{HoverListItem.Link.title}</span>
                     </a>
+                  </div>
                 </div>
-                <div class="flex-1">
-                    <h2 class=" text-xxl mb-6">{HoverListItem.Title}</h2>
-                </div>
+              ))}
             </div>
-            
-        ))}
+          
+            <div class="col-span-2 right-column">
+              {blok.Items && blok.Items.length > 0 && blok.Items.map((HoverListItem, index) => (
+                <h2 class="text-xxxl text-black right-title transition cursor-pointer" data-item-index={index}>
+                  {HoverListItem.Title}
+                </h2>
+              ))}
+            </div>
+          </div>
+        
     </div>
 
 </div>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const leftItems = document.querySelectorAll(".left-column .left");
+  const rightTitles = document.querySelectorAll(".right-column .right-title");
+
+  // Show the first left item and add active class to the first title initially
+  leftItems[0].classList.add("active");
+  rightTitles[0].classList.add("active");
+
+  rightTitles.forEach((title, index) => {
+    title.addEventListener("mouseover", () => {
+      leftItems.forEach((item) => {
+        item.classList.remove("active");
+      });
+
+      rightTitles.forEach((title) => {
+        title.classList.remove("active");
+      });
+
+      leftItems[index].classList.add("active");
+      title.classList.add("active");
+    });
+  });
+});
+
+
+
+</script>
