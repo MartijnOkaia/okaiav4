@@ -37,6 +37,7 @@ module.exports = {
       DEFAULT: "10px",
       lg: "20px",
       xl: "40px",
+      xxl: "50px",
       full: "50%"
     },
     fontFamily: {
