@@ -17,7 +17,7 @@ const { blok } = Astro.props
 
     <div class="mx-auto relative">
        
-      <swiper-container class="swiper-container mb-16"   keyboard="true" slides-per-view="auto" centered-slides="true" free-mode="true" navigation="true" space-between="300" loop="false" init="false">
+      <swiper-container class="swiper-container mb-16" id="swiper-container"  keyboard="true" slides-per-view="auto" centered-slides="true" free-mode="true" navigation="true" space-between="300" loop="false" init="false">
         {blok.Cards && blok.Cards.length > 0 && blok.Cards.map((Card, index) => (
           <swiper-slide class="w-[680px] h-100 bg-white rounded-xl px-[60px] py-[60px]" lazy="false" key={index}>
               <div class="uppercase text-sm mb-6">{Card.Title}</div>
@@ -41,8 +41,6 @@ const { blok } = Astro.props
         </span>
        
       </div>
-
-      
         
     </div>
 
@@ -134,7 +132,6 @@ const { blok } = Astro.props
 
 
 </script>
-
 
 
 

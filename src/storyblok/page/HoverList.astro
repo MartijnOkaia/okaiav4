@@ -36,7 +36,7 @@ const { blok } = Astro.props
 
 </style>
 
-<div {...storyblokEditable(blok)} class="my-24">
+<div {...storyblokEditable(blok)} class="my-36">
 
     
     <div class="mx-auto px-[30px] mb-24">
@@ -60,10 +60,10 @@ const { blok } = Astro.props
     <div class="mx-auto px-[30px]">
 
         <div class="grid grid-cols-3 gap-10">
-            <div class="left-column relative">
+            <div class="left-column relative h-100">
               {blok.Items && blok.Items.length > 0 && blok.Items.map((HoverListItem, index) => (
-                <div class={`left h-auto  absolute ${index === 0 ? 'active' : ''}`}>
-                  <video playsinline autoplay loop muted class="rounded-lg w-full mb-4 transition-slow">
+                <div class={`left max-w-[80%] h-auto  absolute ${index === 0 ? 'active' : ''}`}>
+                  <video playsinline autoplay loop muted class="rounded-lg w-full mb-8 transition-slow">
                     <source src={HoverListItem.Media.filename} type="video/mp4" />
                   </video>
                   <div class="inner transition">

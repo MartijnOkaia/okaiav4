@@ -9,26 +9,80 @@ const { blok } = Astro.props
 <style>
 
 .image-grid img {
-    width: 300px;
-    object-fit: cover;
+    width: 25vw;
+    position: absolute;
 }
-
+.image-grid img:nth-child(1) {
+    width: 20vw;
+    height: 18vw;
+    top: 10vh;
+}
 .image-grid img:nth-child(2) {
-    width: 500px;
-    object-fit: cover;
-    transform: translateX(500px);
+    width: 15vw;
+    left: 50vw;
 }
-
+.image-grid img:nth-child(3) {
+    width: 20vw;
+    left: 90vw;
+    top: 10vh;
+}
+.image-grid img:nth-child(4) {
+    width: 40vw;
+    left: 130vw;
+}
+.image-grid img:nth-child(5) {
+    width: 20vw;
+    height: 20vw;
+    left: 45vw;
+    top: 35vh;
+}
+.image-grid img:nth-child(6) {
+    width: 25vw;
+    left: 120vw;
+    top: 70vh;
+}
+.image-grid img:nth-child(7) {
+    width: 30vw;
+    top: 60vh;
+}
+.image-grid img:nth-child(8) {
+    width: 30vw;
+    top: 50vh;
+    left: 80vw;
+}
 </style>
 
 <div {...storyblokEditable(blok)} class="my-34">
 
-    <div class="mx-auto px-[30px] image-grid">
+    <div class="mx-auto px-[30px] image-grid h-screen relative">
 
         {blok.Images && blok.Images.length > 0 && blok.Images.map((ImageItem, index) => (
-            <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" class="rounded" />
+            <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" class="rounded object-cover" />
         ))}
         
     </div>
 
 </div> 
+
+
+
+<script>
+    
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.image-grid img', {
+        x: '-100%', // Set the initial x position (off the screen to the right)
+        duration: 1, // Animation duration
+        scrollTrigger: {
+        trigger: '.image-grid', // Trigger element
+        start: 'top bottom', // Start the animation when the element is at the top center of the viewport
+        end: 'bottom center', // End the animation when the element is at the bottom center of the viewport
+        scrub: 0.8, // Enable scrubbing
+        },
+    });
+
+
+</script>
