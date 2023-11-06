@@ -11,10 +11,12 @@ const { blok } = Astro.props
 
     <div class="mx-auto px-[30px] ">
 
-        <div class="rounded-lg p-8 bg-pink relative overflow-hidden h-[600px]">
-            <h2 class="animate text-xxl max-w-[1100px] font-medium relative z-20 text-black">{blok.title}</h2>
-            <p class="absolute z-20 bottom-8 left-8 text-md">{blok.Text}</p>
-            <svg class="absolute w-1/2 right-0" viewBox="0 0 730 730" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="rounded-lg p-8 bg-pink relative overflow-hidden h-[600px] hover:bg-black hover:m-[10px] hover:h-[580px] hover:translate-y-[10px] transition-slow group/item ">
+            <h2 class="animate text-xxl max-w-[1100px] font-medium relative z-20 mb-8 text-black group-hover/item:text-white transition-slow">{blok.title}</h2>
+            <a class="button white special " href={blok.button.cached_url}><span>{blok.button.title}</span></a>
+            
+            <p class="absolute z-20 bottom-8 left-8 text-md group-hover/item:text-white transition-slow">{blok.Text}</p>
+            <svg class="absolute w-1/2 right-0 group-hover/item:-rotate-180 transition-slow" viewBox="0 0 730 730" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M365 162.665C253.304 162.79 162.792 253.307 162.663 365C162.792 476.693 253.304 567.21 365 567.335V730C163.738 730.003 8.79752e-06 566.264 0 365C2.63926e-05 163.736 163.738 -0.00341419 365 -8.1644e-06C566.262 -0.00334626 730 163.736 730 365C730 566.264 566.262 730.003 365 730V567.335C476.696 567.21 567.208 476.693 567.337 365C567.208 253.307 476.696 162.79 365 162.665Z" fill="#C8FB50"/>
                 <circle cx="638.5" cy="289.5" r="75.5" fill="#FBFAF5"/>
             </svg>

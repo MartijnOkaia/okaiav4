@@ -285,28 +285,28 @@ const { title, otherSlug } = Astro.props;
     position: fixed;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 2px;
+    height: 2px;
     border-radius: 50%;
-    background-color: #0057FF;
+    background-color: black;
     z-index: 2000;
     user-select: none;
     pointer-events: none;
     opacity: 0;
 }
 
-/* .follower{
+.follower{
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px;
-    height: 100px;
-    background-color: #C8FB50;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    border: 1px solid black;
     opacity: 0;
     user-select: none;
     pointer-events: none;
-} */
+}
     
 </style>  
 
@@ -331,14 +331,14 @@ const { title, otherSlug } = Astro.props;
             });
 
             gsap.to(follow, {
-                duration: 0.4,
+                duration: 0.3,
                 x: e.clientX,
                 y: e.clientY,
             });
 
             // Show the cursor and follower on user interaction
             gsap.to(".cursor", { duration: 0.3, opacity: 1 });
-            gsap.to(".follower", { duration: 0.3, opacity: 0.3 });
+            gsap.to(".follower", { duration: 0.3, opacity: 0.5 });
         });
 
         link.addEventListener("mouseenter", () => {

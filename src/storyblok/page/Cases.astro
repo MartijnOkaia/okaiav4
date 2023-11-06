@@ -1,7 +1,6 @@
 ---
-
-import { storyblokEditable } from '@storyblok/astro'
-import { useStoryblokApi } from '@storyblok/astro'
+import { storyblokEditable } from '@storyblok/astro';
+import { useStoryblokApi } from '@storyblok/astro';
 import { getLangFromUrl, useTranslatedPath } from '../../scripts/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -10,20 +9,30 @@ const storyblokApi = useStoryblokApi();
 
 let storiesData = [];
 
-const { blok } = Astro.props
+const { blok } = Astro.props;
 
 if (!blok.Cases || blok.Cases.length === 0) {
-  const { data } = await storyblokApi.get('cdn/stories',
-  {
-      version: process.env.PUBLIC_ENV !== 'production' ? 'draft' : 'published',
-      content_type: 'work',
-      language: lang
+  const { data } = await storyblokApi.get('cdn/stories', {
+    version: process.env.PUBLIC_ENV !== 'production' ? 'draft' : 'published',
+    content_type: 'work',
+    language: lang,
   });
   storiesData = data.stories;
 } else {
-  storiesData = blok.Cases
+  storiesData = blok.Cases;
 }
 
+// Extract tags from all entries before mapping them into 'posts'
+const allTags = [];
+
+storiesData.forEach(entry => {
+  const tags = entry.tag_list || []; // Use 'tag_list' to access tags
+  tags.forEach(tag => {
+    if (!allTags.includes(tag)) {
+      allTags.push(tag);
+    }
+  });
+});
 
 const posts = storiesData.map(story => {
   return {
@@ -32,12 +41,52 @@ const posts = storiesData.map(story => {
     image: story.content.image.filename,
     portrait: story.content.portraitCover,
     slug: story.full_slug,
-  }
-})
+    tags: story.tag_list, // Use 'tag_list' to access tags
+  };
+});
+
+function filterByTag(tag) {
+  return posts.filter(post => post.tags.includes(tag));
+}
+
+
+console.log(posts);
 
 ---
 
+<style>
+.cat label input {
+  position: absolute;
+  display: none;
+}
+</style>
+
 <div {...storyblokEditable(blok)} class="">
+
+
+    <div class=" bottom-4 fixed w-full mx-auto justify-center flex px-[30px] w-100 ">
+      
+      <!-- Display the list of tags for filtering -->
+        <div id="tagFilter" class="rounded-[20px] bg-black inline-flex p-[4px] gap-1">
+          
+          <div class="cat px-[19px] py-[17px] leading-none rounded-[16px] bg-darkGrey text-black ">
+              <span class="text-[16px] weight-450  leading-none ">Filters</span>
+          </div>
+  
+          <div class="rounded-[16px] bg-beige p-[4px] inline-flex gap-1 bg-opacity-25">
+            {allTags.map(tag => (
+              <div class="cat">
+                <label class="group/item block">
+                    <input type="checkbox"  class="peer" value={tag} key={tag}>
+                    <span class="transition block text-[16px] text-white leading-none rounded-[16px] px-[19px] py-[17px] bg-black text-opacity-50 border border-transparent group-hover/item:text-opacity-100 peer-checked:text-green hover:border-darkGrey peer-checked:border-green">{tag}</span>
+                </label>
+              </div>
+            ))}
+          </div>
+  
+        </div>
+  
+    </div>
 
     <div class="mx-auto px-[30px] ">
 
@@ -56,7 +105,7 @@ const posts = storiesData.map(story => {
               <a href={`/${post.slug}`} class={`cursor-none group hover-target scale-50 py-20 bg-${blok.background}`}>
                 
                 { blok.Columns == 3 ? (
-                  <>
+                  <div>
 
                     <div class="relative rounded-lg overflow-hidden">
                       { post.portrait.id ? (
@@ -77,12 +126,12 @@ const posts = storiesData.map(story => {
                       </div>
                       <h3 class="animate text-md group-hover:ml-3 transition-all duration-[450ms] max-w-[calc(100%-75px)] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">{post.description}</h3> 
                     </div>
-                  </>
+                  </div>
                 ) : (
-                  <>
+                  <div>
                     <h3 class="animate text-md mb-4">{post.description}</h3>
                     <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] object-cover mb-8" />
-                  </>
+                  </div>
                 )}
               </a>
             </li>
@@ -94,10 +143,11 @@ const posts = storiesData.map(story => {
 </div>
 
 <script>
-  
-  import { gsap } from "gsap";
 
-  document.addEventListener('DOMContentLoaded', function() {
+
+import { gsap } from "gsap";
+
+document.addEventListener('DOMContentLoaded', function() {
 
 const customCursor = document.getElementById('custom-cursor');
 

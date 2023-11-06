@@ -4,6 +4,10 @@ import { storyblokEditable } from '@storyblok/astro'
 
 const { blok } = Astro.props
 
+import { Image } from 'astro:assets';
+import localArrowRight from '../../img/icons/arrow-right.svg';
+
+
 ---
 
 <style>
@@ -51,7 +55,10 @@ const { blok } = Astro.props
                 <p class="">{blok.Text}</p>
             </div>
             <div class="flex-1 flex justify-end	">
-                <a href="" class="text-link hollow self-end text-medium text-base"><span>Find out more</span></a>
+                <a href="" class="text-link flex hollow self-end text-medium text-base font-weight-450">
+                  <img src={localArrowRight.src} width="24px" height="24px" alt="Arrow right">
+                  <span>Find out more</span>
+                </a>
             </div>
         </div>
         
