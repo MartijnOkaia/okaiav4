@@ -48,7 +48,8 @@ export default defineConfig({
         Title: "storyblok/page/Title",
         TextMedia: "storyblok/page/TextMedia",
 
-        TwoImages: "storyblok/case/TwoImages",
+        DoubleMedia: "storyblok/case/DoubleMedia",
+        FullwidthMedia: "storyblok/case/FullwidthMedia",
 
       },
     }),

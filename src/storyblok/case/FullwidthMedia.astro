@@ -1,0 +1,28 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+const url = blok.Media.filename; // Replace with your actual URL
+const fileExtension = url.split('.').pop().toLowerCase();
+
+
+---
+
+
+<div {...storyblokEditable(blok)} class='my-36'>
+
+    <div class="mx-auto px-[30px] ">
+
+        { fileExtension == 'mp4' ? (
+            <video autoplay playsinline muted loop class="w-full object-cover z-index-10 rounded">
+                <source src={blok.Media.filename} type="video/mp4" />
+            </video>
+        ) : (
+            <img src={`${blok.Media.filename}/m/1900x0/smart`} lazy="true" class=" w-full  object-cover z-index-10 rounded" />
+        )}
+
+    </div>
+
+</div> 

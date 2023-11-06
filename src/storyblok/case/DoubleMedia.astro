@@ -1,0 +1,43 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+const imageUrls = blok.Images.map((ImageItem) => {
+  const url = ImageItem.filename;
+  const fileExtension = url.split('.').pop().toLowerCase();
+  return { url, fileExtension };
+});
+
+// console.log(url)
+
+---
+
+
+<div {...storyblokEditable(blok)} class='my-36'>
+
+    <div class="mx-auto px-[30px] ">
+
+        <div class="grid grid-cols-2 gap-5">
+       
+            {blok.Images && blok.Images.length > 0 && blok.Images.map((ImageItem, index) => (
+                ImageItem.filename.toLowerCase().includes('.mp4') ? (
+                    <div class="rounded overflow-hidden">
+                        <video  autoPlay playsInline muted loop className="w-full h-auto rounded object-cover z-index-10 overflow-hidden">
+                            <source src={ImageItem.filename} type="video/mp4" />
+                        </video>
+                    </div>
+                    ) : (
+                    <div class="rounded overflow-hidden">
+                        <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" className=" w-full rounded object-cover z-index-10 overflow-hidden" />
+                    </div>
+                    )
+                
+                ))}
+         
+        </div>
+
+    </div>
+
+</div> 

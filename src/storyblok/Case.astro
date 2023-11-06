@@ -4,8 +4,6 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 
 const { blok } = Astro.props
 
-// console.log(blok);
-
 const url = blok.image.filename; // Replace with your actual URL
 const fileExtension = url.split('.').pop().toLowerCase();
 
@@ -13,13 +11,40 @@ const fileExtension = url.split('.').pop().toLowerCase();
 
 <main {...storyblokEditable(blok)}>
 
-  { fileExtension == 'mp4' ? (
-    <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto aspect-[16/9] object-cover ">
-      <source src={blok.image.filename} type="video/mp4">
-    </video>
-  ) : (
-    <img src={`${blok.image.filename}/m/1900x0/smart`} lazy="true" class=" aspect-[16/9] object-cover " />
-  )}
+  <div class="relative h-screen items-end flex mb-36 ">
+    { fileExtension == 'mp4' ? (
+      <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto absolute h-full w-full object-cover z-index-10">
+        <source src={blok.image.filename} type="video/mp4" />
+      </video>
+    ) : (
+        <img src={`${blok.image.filename}/m/1900x0/smart`} lazy="true" class=" h-full w-full absolute object-cover z-index-10" />
+    )}
+    <div class="mx-auto px-[30px] z-20 w-full">
+      <h1 class="text-white mb-8 text-xxxl font-[450]">{blok.title}</h1>
+    </div>
+  </div>
+
+  <div class="mx-auto my-36 px-[30px] text-black">
+    <div class="grid grid-cols-12 mb-16 gap-5">
+      <div class="col-start-6 col-span-7">
+        <h2 class="text-xl">{blok.description}</h2>  
+      </div>
+    </div>
+    <div class="grid grid-cols-12 gap-5">
+      <div class="">
+        <p class="text-sm  uppercase">[Services]</p>
+      </div>
+      <div class="col-span-3">
+        <div class="text-md">{blok.Services}</div>
+      </div>
+      <div>
+        <p class="text-sm  uppercase">[Scope]</p>
+      </div>
+      <div class="col-span-6">
+        <div class="text-base text-black">{blok.Text}</div>
+      </div>
+    </div>
+  </div>
 
   {
     blok.body?.map((blok) => {
