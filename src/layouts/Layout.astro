@@ -38,7 +38,7 @@ const { title, otherSlug } = Astro.props;
 
         <div id="transition-circle" class="circleItem bg-black shadow fixed top-1/2 left-1/2 w-0 z-40 h-auto rounded-full -translate-x-1/2 -translate-y-1/2 aspect-square"></div>
 
-        <div id="custom-cursor" class="opacity-0 border custom-cursor z-50 aspect-square w-[140px] rounded-[50%] -mt-[70px] -ml-[70px] fixed pointer-events-none flex items-center justify-center text-white scale-[0.1]" style="background-color: rgba(247, 246, 241, 0.10); backdrop-filter: blur(10px);">
+        <div id="custom-cursor" class="opacity-0 border custom-cursor z-50 aspect-square w-[140px] rounded-[50%]  -mt-[70px] -ml-[70px] fixed pointer-events-none flex items-center justify-center text-white scale-[0.1]" style="background-color: rgba(247, 246, 241, 0.10); backdrop-filter: blur(10px);">
             More
         </div>
 
@@ -73,10 +73,10 @@ const { title, otherSlug } = Astro.props;
                                 </>
                             ) : (
                                 <>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/werk/')}>Ons werk</a></li>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/diensten/')}>Diensten</a></li>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/cultuur/')}>Cultuur</a></li>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6"><a href={translatePath('/contact/')}>Contact</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/werk/')}>Ons werk</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/diensten/')}>Diensten</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/cultuur/')}>Cultuur</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/contact/')}>Contact</a></li>
                                 </>
                             )}
 
@@ -285,22 +285,24 @@ const { title, otherSlug } = Astro.props;
     position: fixed;
     top: 0;
     left: 0;
-    width: 2px;
-    height: 2px;
+    width: 6px;
+    height: 6px; 
     border-radius: 50%;
-    background-color: black;
+    background-color: white;
+    /* border: 1px solid white; */
     z-index: 2000;
     user-select: none;
     pointer-events: none;
     opacity: 0;
+    mix-blend-mode: difference;
 }
 
 .follower{
     position: fixed;
     top: 0;
     left: 0;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: 1px solid black;
     opacity: 0;
@@ -314,43 +316,61 @@ const { title, otherSlug } = Astro.props;
     
     import { gsap } from "gsap";
 
+    gsap.set(".follower", { xPercent: -50, yPercent: -50, opacity: 0 });
+    gsap.set(".cursor", { xPercent: -50, yPercent: -50, opacity: 0 });
 
-        gsap.set(".follower", { xPercent: -50, yPercent: -50, opacity: 0 });
-        gsap.set(".cursor", { xPercent: -50, yPercent: -50, opacity: 0 });
+    var follow = document.querySelector(".follower");
+    var cur = document.querySelector(".cursor");
+    var links = document.querySelectorAll("li[data-cursor-stick] a");
+    var isCursorSticking = false;
 
-        var follow = document.querySelector(".follower");
-        var cur = document.querySelector(".cursor");
-        var link = document.querySelector("a"); // Select the <a> element
+    // Add event listeners to reveal the cursor and follower on user interaction
+    document.addEventListener("mousemove", (e) => {
+    gsap.to(cur, {
+        duration: 0.1,
+        x: e.clientX,
+        y: e.clientY,
+    });
 
-        // Add event listeners to reveal the cursor and follower on user interaction
-        document.addEventListener("mousemove", (e) => {
-            gsap.to(cur, {
-                duration: 0.2,
-                x: e.clientX,
-                y: e.clientY,
-            });
-
-            gsap.to(follow, {
-                duration: 0.3,
-                x: e.clientX,
-                y: e.clientY,
-            });
-
-            // Show the cursor and follower on user interaction
-            gsap.to(".cursor", { duration: 0.3, opacity: 1 });
-            gsap.to(".follower", { duration: 0.3, opacity: 0.5 });
+    // Check if the cursor is within the proximity of any of the elements and apply sticking effect
+    links.forEach((link) => {
+        const rect = link.getBoundingClientRect();
+        if (
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom
+        ) {
+        isCursorSticking = true;
+        gsap.to(follow, {
+            duration: 0.25,
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2,
+            scale: 0.5,
         });
+        }
+    });
 
-        link.addEventListener("mouseenter", () => {
-            // Change the cursor appearance when hovering over the <a> element
-            gsap.to(cur, { scale: 2 }); // For example, scale up the cursor
+    // If the cursor is not in proximity of any element, revert the sticking effect with a delay
+    if (!isCursorSticking) {
+        gsap.to(follow, {
+        duration: 0.3,
+        scale: 1,
+        x: e.clientX,
+        y: e.clientY,
         });
+    }
 
+    // Show the cursor and follower on user interaction
+    gsap.to(".cursor", { duration: 0.3, opacity: 1 });
+    gsap.to(".follower", { duration: 0.3, opacity: 0.5 });
+    });
+
+    // Add a mouse leave event on the links to ensure the sticking effect is removed when leaving the element
+    links.forEach((link) => {
         link.addEventListener("mouseleave", () => {
-            // Revert the cursor appearance when the mouse leaves the <a> element
-            gsap.to(cur, { scale: 1 }); // Revert the scale
+            isCursorSticking = false;
         });
-
-
+    });
 
 </script>

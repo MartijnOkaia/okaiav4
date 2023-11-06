@@ -1,0 +1,34 @@
+---
+
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+const renderedRichText = renderRichText(blok.Text)
+
+---
+
+
+<div {...storyblokEditable(blok)} class="title-block py-28">
+
+    <div class="mx-auto px-[30px] ">
+
+        <h1 class="animate text-xl 2xl:text-xxl max-w-[770px] 2xl:max-w-[900px] font-medium inline-block text-black">
+            {blok.Title}
+        </h1>
+
+    </div>
+
+    <div class="mx-auto px-[30px] justify-center">
+        <div class="grid grid-cols-4">
+            <div class="cols-2 prose" set:html={renderedRichText} />
+        </div>
+    </div>
+
+</div> 
+
+<style is:global>
+    main > div:first-of-type.title-block{
+        padding-top: 10rem !important;
+    }
+</style>

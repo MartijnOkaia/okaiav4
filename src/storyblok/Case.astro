@@ -3,9 +3,24 @@ import { storyblokEditable } from '@storyblok/astro'
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 
 const { blok } = Astro.props
+
+// console.log(blok);
+
+const url = blok.image.filename; // Replace with your actual URL
+const fileExtension = url.split('.').pop().toLowerCase();
+
 ---
 
 <main {...storyblokEditable(blok)}>
+
+  { fileExtension == 'mp4' ? (
+    <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto aspect-[16/9] object-cover ">
+      <source src={blok.image.filename} type="video/mp4">
+    </video>
+  ) : (
+    <img src={`${blok.image.filename}/m/1900x0/smart`} lazy="true" class=" aspect-[16/9] object-cover " />
+  )}
+
   {
     blok.body?.map((blok) => {
       return <StoryblokComponent blok={blok} />

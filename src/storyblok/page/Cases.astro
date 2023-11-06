@@ -88,6 +88,7 @@ console.log(posts);
   
     </div>
 
+
     <div class="mx-auto px-[30px] ">
 
         <div class="grid grid-cols-2 mb-6 items-end">
@@ -102,12 +103,12 @@ console.log(posts);
         <ul class={`grid grid-cols-${blok.Columns} gap-5`}>
           {posts.map(post => (
             <li class="flex-1">
-              <a href={`/${post.slug}`} class={`cursor-none group hover-target scale-50 py-20 bg-${blok.background}`}>
+              <a href={`/${post.slug}`} class={`cursor-none group  scale-50 py-20 bg-${blok.background}`}>
                 
                 { blok.Columns == 3 ? (
                   <div>
 
-                    <div class="relative rounded-lg overflow-hidden">
+                    <div class="relative rounded-lg overflow-hidden hover-target" >
                       { post.portrait.id ? (
                         <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto group-hover:scale-105 transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
                           <source src={post.portrait.filename} type="video/mp4">
@@ -128,9 +129,12 @@ console.log(posts);
                     </div>
                   </div>
                 ) : (
-                  <div>
-                    <h3 class="animate text-md mb-4">{post.description}</h3>
-                    <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] object-cover mb-8" />
+                  <div class="group">
+                    <h3 class=" animate text-md mb-4 relative overflow-hidden">
+                      <span class="group-hover:-translate-y-8 block  transition-slow">{post.description}</span>
+                      <span class="absolute top-8 left-0 transition-slow group-hover:top-0 underline">{post.description}</span>
+                    </h3>
+                    <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] object-cover mb-8 hover-target" />
                   </div>
                 )}
               </a>
