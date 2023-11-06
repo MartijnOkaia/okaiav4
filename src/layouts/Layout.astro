@@ -10,8 +10,9 @@ interface Props {
 	title: string;
 }
 
-const { title, otherSlug } = Astro.props;
+const { title, otherSlug, content_type } = Astro.props;
 
+console.log(content_type);
 
 ---
 

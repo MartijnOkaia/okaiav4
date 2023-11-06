@@ -54,19 +54,15 @@ console.log(posts);
 
 ---
 
-<style>
-.cat label input {
-  position: absolute;
-  display: none;
-}
-</style>
+
 
 <div {...storyblokEditable(blok)} class="">
 
+  <!-- Display the list of tags for filtering -->
+  {blok.Columns < 3 ? (
 
     <div class=" bottom-4 fixed w-full mx-auto justify-center flex px-[30px] w-100 ">
       
-      <!-- Display the list of tags for filtering -->
         <div id="tagFilter" class="rounded-[20px] bg-black inline-flex p-[4px] gap-1">
           
           <div class="cat px-[19px] py-[17px] leading-none rounded-[16px] bg-darkGrey text-black ">
@@ -77,7 +73,7 @@ console.log(posts);
             {allTags.map(tag => (
               <div class="cat">
                 <label class="group/item block">
-                    <input type="checkbox"  class="peer" value={tag} key={tag}>
+                    <input type="checkbox "  class="peer absolute hidden" value={tag} key={tag}/>
                     <span class="transition block text-[16px] text-white leading-none rounded-[16px] px-[19px] py-[17px] bg-black text-opacity-50 border border-transparent group-hover/item:text-opacity-100 peer-checked:text-green hover:border-darkGrey peer-checked:border-green">{tag}</span>
                 </label>
               </div>
@@ -87,6 +83,8 @@ console.log(posts);
         </div>
   
     </div>
+
+    ) : null}
 
 
     <div class="mx-auto px-[30px] ">

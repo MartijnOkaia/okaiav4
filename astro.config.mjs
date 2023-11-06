@@ -50,6 +50,7 @@ export default defineConfig({
 
         DoubleMedia: "storyblok/case/DoubleMedia",
         FullwidthMedia: "storyblok/case/FullwidthMedia",
+        CaseText: "storyblok/case/CaseText",
 
       },
     }),
