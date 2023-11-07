@@ -1,0 +1,42 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+// console.log(url)
+
+---
+
+
+<div {...storyblokEditable(blok)} class='my-36 overflow-hidden'>
+
+    <div class="mx-auto px-[30px] text-black">
+
+        <div class="case-marquee inline-flex w-full text-xxxxl uppercase gap-20 leading-none ">
+            {blok.Items && blok.Items.length > 0 && blok.Items.map((MarqueeItem, index) => (
+                <div class="marquee-item  flex-none inline-block relative">{MarqueeItem.Title}</div>
+            ))}
+            {blok.Items && blok.Items.length > 0 && blok.Items.map((MarqueeItem, index) => (
+                <div class="marquee-item  flex-none inline-block relative">{MarqueeItem.Title}</div>
+            ))}
+        </div>
+
+    </div>
+
+</div> 
+
+
+<script>
+
+    import { gsap } from "gsap";
+    import { horizontalLoop } from "../../scripts/marquee"
+  
+  
+    const marqueeContainers = gsap.utils.toArray(".case-marquee");
+    marqueeContainers.forEach(container => {
+        const boxes = gsap.utils.toArray(container.querySelectorAll(".marquee-item"));
+        const loop = horizontalLoop(boxes, { repeat: -1 });
+    });
+  
+</script>

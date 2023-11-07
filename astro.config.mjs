@@ -50,11 +50,15 @@ export default defineConfig({
 
         DoubleMedia: "storyblok/case/DoubleMedia",
         FullwidthMedia: "storyblok/case/FullwidthMedia",
+        CaseCallToAction: "storyblok/case/CaseCallToAction",
+        CaseInfo: "storyblok/case/CaseInfo",
         CaseText: "storyblok/case/CaseText",
+        Marquee: "storyblok/case/Marquee",
+        Parallax: "storyblok/case/Parallax",
 
       },
     }),
-    robotsTxt({
+    robotsTxt({ 
       policy: [
         {
           userAgent: "*",

@@ -28,11 +28,16 @@ module.exports = {
       sm: ["14px", "20px"],
       base: ["20px", "130%"],
       md: ["26px", "33px"],
+      
       lg: ["40px", "100%"],
       xl: ["50px", "100%"],
       xxl: ["60px", "100%"],
       xxxl: ["80px", "78px"],
       xxxxl: ["120px", "100%"],
+    },
+    fontWeight: {
+      base: 'normal',
+      medium: '460',
     },
     borderRadius: {
       DEFAULT: "10px",

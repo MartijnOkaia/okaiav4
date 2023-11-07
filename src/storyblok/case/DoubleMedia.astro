@@ -21,20 +21,19 @@ const imageUrls = blok.Images.map((ImageItem) => {
 
         <div class="grid grid-cols-2 gap-5">
        
-            {blok.Images && blok.Images.length > 0 && blok.Images.map((ImageItem, index) => (
+            {blok.Images && blok.Images.length > 0 && blok.Images.map((ImageItem) => (
                 ImageItem.filename.toLowerCase().includes('.mp4') ? (
                     <div class="rounded overflow-hidden">
-                        <video  autoPlay playsInline muted loop className="w-full h-auto rounded object-cover z-index-10 overflow-hidden">
+                        <video  autoplay playsinline muted loop class="w-full h-auto rounded object-cover z-index-10 overflow-hidden">
                             <source src={ImageItem.filename} type="video/mp4" />
                         </video>
                     </div>
                     ) : (
                     <div class="rounded overflow-hidden">
-                        <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" className=" w-full rounded object-cover z-index-10 overflow-hidden" />
+                        <img src={`${ImageItem.filename}/m/1200x0/smart`} lazy="true" class=" w-full rounded object-cover z-index-10 overflow-hidden" />
                     </div>
-                    )
-                
-                ))}
+                )
+            ))}
          
         </div>
 

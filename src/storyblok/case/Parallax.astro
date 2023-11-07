@@ -1,0 +1,71 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+const urlFront = blok.Front.filename; // Replace with your actual URL
+const fileExtension = urlFront.split('.').pop().toLowerCase();
+
+const urlBack = blok.Back.filename; // Replace with your actual URL
+const fileExtensionBack = urlBack.split('.').pop().toLowerCase();
+
+// console.log(url)
+
+---
+
+
+<div {...storyblokEditable(blok)} class='my-36'>
+
+    <div class="mx-auto px-[30px] text-black">
+
+        <div class="items-center relative aspect-video flex content-center justify-center overflow-hidden z-20 rounded">
+            { fileExtension == 'mp4' ? (
+                <video width="320" height="240" autoplay playsinline muted loop class=" w-28 relative  z-20">
+                    <source src={blok.Front.filename} type="video/mp4" />
+                </video>
+            ) : (
+                <img src={`${blok.Front.filename}/m/1900x0/smart`} lazy="true" class="  w-28 relative  z-20" />
+            )}
+            { fileExtensionBack == 'mp4' ? (
+                <video width="320" height="240" autoplay playsinline muted loop class="parallax w-full h-[120%] -top-[20%] absolute rounded h-full w-full object-cover z-10">
+                    <source src={blok.Back.filename} type="video/mp4" />
+                </video>
+            ) : (
+                <img src={`${blok.Back.filename}/m/1900x0/smart`} lazy="true" class="parallax  w-full h-[120%] -top-[20%] absolute rounded object-cover z-10" />
+            )}
+        </div>
+
+    </div>
+
+</div> 
+
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+/// PARALLAX
+var parallaxs = gsap.utils.toArray('.parallax ');
+  if (parallaxs) {
+    parallaxs.forEach(parallax => {
+      if (parallax) {
+        gsap.to('.parallax', { 
+          y: "20%",
+          duration: 1,
+          // stagger: .1,
+          ease: "power.in.out",
+          scrollTrigger: {
+            ignoreMobileResize: true,
+            trigger: parallax,
+            scrub: 1,
+            // start: "-=100 bottom", // when 100px of the top of the trigger hits the bottom of the viewport
+            // end: "+=400", // end after scrolling 100px beyond the start
+          }
+        });
+      }
+    });
+  }
+</script>

@@ -12,6 +12,9 @@ interface Props {
 
 const { title, otherSlug, content_type } = Astro.props;
 
+import { Image } from 'astro:assets';
+import localLogoGif from '../img/logo-gif.gif';
+
 console.log(content_type);
 
 ---
@@ -50,8 +53,9 @@ console.log(content_type);
 
                 <div class="flex content-middle align-center items-center">
                     <div class="grow">
-                        <a href={translatePath('/')}>
-                            <svg width="119" height="34" viewBox="0 0 119 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <a class="flex relative overflow-hidden items-center rounded h-[62px] group" href={translatePath('/')}>
+                            <img class="absolute rounded-lg object-cover w-[20px] h-[62px] -left-[50px] group-hover:left-0 group-hover:w-[62px] transition-slow" width="62px" src={localLogoGif.src} alt="">
+                            <svg class="group-hover:translate-x-20 transition-slow" width="119" height="34" viewBox="0 0 119 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M24.522 21.7706C24.522 28.8215 18.9353 33.5217 12.3276 33.5217C5.71992 33.5217 0 28.8202 0 21.7706C0 14.7209 5.58669 10.063 12.3276 10.063C19.0685 10.063 24.522 14.7632 24.522 21.7706ZM17.6927 21.7706C17.6927 18.3117 15.0768 16.0058 12.3276 16.0058C9.57847 16.0058 6.82932 18.3117 6.82932 21.7706C6.82932 25.2294 9.44524 27.5353 12.3276 27.5353C15.21 27.5353 17.6927 25.2743 17.6927 21.7706Z" fill="black"/>
                                 <path d="M77.6143 32.859H70.5198V31.0847C68.7904 32.6361 66.4845 33.5238 63.6021 33.5238C57.7041 33.5238 52.7374 28.7788 52.7374 21.7279C52.7374 14.6769 57.7041 9.93188 63.6021 9.93188C66.4845 9.93188 68.7904 10.8197 70.5198 12.371V10.5968H77.6143V32.8577V32.859ZM70.5198 21.7291C70.5198 18.3138 67.9474 15.9644 65.065 15.9644C61.961 15.9644 59.7 18.3151 59.7 21.7291C59.7 25.1432 61.961 27.4939 65.065 27.4939C67.9474 27.4939 70.5198 25.188 70.5198 21.7291Z" fill="black"/>
                                 <path d="M90.7652 4.03533C90.7652 6.2964 89.0357 7.98227 86.6415 7.98227C84.2472 7.98227 82.5613 6.29768 82.5613 4.03533C82.5613 1.77298 84.2459 0 86.6415 0C89.037 0 90.7652 1.86266 90.7652 4.03533Z" fill="black"/>
@@ -188,7 +192,7 @@ console.log(content_type);
 	}
 
     .button {
-        @apply bg-green relative font-[450] text-base;
+        @apply bg-green relative font-medium text-base;
         padding: 20px 30px 20px 30px;
         font-size: 18px;
         border-radius: 23px;

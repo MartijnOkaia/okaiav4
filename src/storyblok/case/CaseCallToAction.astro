@@ -1,0 +1,34 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+---
+
+
+<div {...storyblokEditable(blok)} class="title-block my-36">
+
+    <div class="mx-auto px-[30px] justify-center text-black max-w-screen-2xl">
+        <div class="grid grid-cols-4 gap-5 items-center  ">
+            <div class=" text-center col-start-2 col-span-2">
+
+                <h2 class="animate text-xl 2xl:text-xxl max-w-[770px] 2xl:max-w-[900px] font-medium inline-block mb-8">
+                    {blok.Title}
+                </h2>
+
+                <div class="flex gap-5 w-full items-center justify-center">
+                    <div>
+                        <img src={`${blok.Image.filename}/m/100x0/smart`} lazy="true" class=" aspect-square w-16 object-cover z-index-10 rounded-lg" />
+                    </div>
+                    <div class="text-start">
+                        <div class="text-base font-medium">{blok.Name}</div>
+                        <div class="text-base ">{blok.Contact}</div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+</div> 

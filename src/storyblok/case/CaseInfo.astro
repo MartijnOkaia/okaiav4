@@ -1,0 +1,38 @@
+---
+
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+const renderedRichText = renderRichText(blok.Text)
+
+---
+
+
+<div {...storyblokEditable(blok)} class="title-block my-36">
+
+    <div class="mx-auto my-36 px-[30px] text-black max-w-screen-2xl text-black">
+        <div class="grid grid-cols-12 mb-16 gap-5">
+          <div class="col-start-6 col-span-7">
+            <h2 class="text-xl">{blok.Title}</h2>  
+          </div>
+        </div>
+        <div class="grid grid-cols-12 gap-5">
+          <div class="">
+            <p class="text-sm  uppercase">[Services]</p>
+          </div>
+          <div class="col-span-3">
+            {blok.Services && blok.Services.length > 0 && blok.Services.map((ServiceItem) => (
+                <div class="text-md">{ServiceItem.Title}</div>
+            ))}
+          </div>
+          <div>
+            <p class="text-sm  uppercase">[Scope]</p>
+          </div>
+          <div class="col-span-6">
+            <div class=" prose" set:html={renderedRichText} />
+          </div>
+        </div>
+      </div>
+
+</div> 
