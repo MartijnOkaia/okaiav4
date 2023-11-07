@@ -38,19 +38,15 @@ const posts = storiesData.map(story => {
   return {
     title: story.content.title,
     description: story.content.description,
-    image: story.content.image.filename,
-    portrait: story.content.portraitCover,
+    Landscape: story.content.Landscape,
+    Portrait: story.content.Portrait,
     slug: story.full_slug,
-    tags: story.tag_list, // Use 'tag_list' to access tags
+    tags: story.tag_list, 
   };
 });
 
-function filterByTag(tag) {
-  return posts.filter(post => post.tags.includes(tag));
-}
-
-
 console.log(posts);
+
 
 ---
 
@@ -107,13 +103,16 @@ console.log(posts);
                   <div>
 
                     <div class="relative rounded-lg overflow-hidden hover-target" >
-                      { post.portrait.id ? (
+                      
+                      { post.Portrait.filename && post.Portrait.filename.toLowerCase().includes('.mp4') ? (
+                        
                         <video width="320" height="240" autoplay playsinline muted loop class="w-full rounded-lg aspect-[45/66] group-hover:scale-105 object-cover transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
-                          <source src={post.portrait.filename} type="video/mp4"/>
+                          <source src={post.Portrait.filename} type="video/mp4"/>
                         </video>
                       ) : (
-                        <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[450/660] object-cover group-hover:scale-105 transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" />
+                        <img src={`${post.Portrait.filename}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[450/660] object-cover group-hover:scale-105 transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" />
                       )}
+
                     </div>
                     
                     <div class="flex mt-4">
@@ -132,7 +131,15 @@ console.log(posts);
                       <span class="group-hover:-translate-y-8 block  transition-slow">{post.description}</span>
                       <span class="absolute top-8 left-0 transition-slow group-hover:top-0 underline">{post.description}</span>
                     </h3>
-                    <img src={`${post.image}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] w-full object-cover mb-8 hover-target" />
+                    
+                    { post.Landscape.filename && post.Landscape.filename.toLowerCase().includes('.mp4') ? (
+                        
+                        <video width="320" height="240" autoplay playsinline muted loop class="w-full rounded-lg aspect-[12/9] group-hover:scale-105 object-cover transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
+                          <source src={post.Landscape.filename} type="video/mp4"/>
+                        </video>
+                      ) : (
+                        <img src={`${post.Landscape.filename}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] w-full object-cover mb-8 hover-target" />
+                      )}
                   </div>
                 )}
               </a>
