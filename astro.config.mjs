@@ -43,9 +43,10 @@ export default defineConfig({
         SliderCards: "storyblok/page/SliderCards",
         SliderCases: "storyblok/page/SliderCases",
         SliderImages: "storyblok/page/SliderImages",
+        Team: "storyblok/page/Team",
         Testimonials: "storyblok/page/Testimonials",
-        Text: "storyblok/page/Text",
         Title: "storyblok/page/Title",
+        Text: "storyblok/page/Text",
         TextMedia: "storyblok/page/TextMedia",
 
         DoubleMedia: "storyblok/case/DoubleMedia",

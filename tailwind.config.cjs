@@ -49,9 +49,21 @@ module.exports = {
     fontFamily: {
       'sans': ['Okaia', 'Verdana Neue', 'Verdana', 'Arial'],
     },
-    extend: {},
+    typography: {
+      DEFAULT: {
+        css: {
+          'p + p': {
+            marginTop: '1rem'
+          },
+        },
+      },
+    },
+    extend: {
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography')
+  ],
   safelist: [
     "bg-white",
     "grid-cols-2",

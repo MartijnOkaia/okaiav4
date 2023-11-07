@@ -1,0 +1,19 @@
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+---
+
+<div {...storyblokEditable(blok)} class=" pt-[120px] video">
+
+    <div class="mx-auto px-[30px]">
+
+        <video playsinline autoplay muted class="rounded-lg w-full">
+            <source src={blok.Media.filename} type="video/mp4" />
+        </video>
+
+    </div>
+
+</div>

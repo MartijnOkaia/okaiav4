@@ -6,7 +6,6 @@ const { blok } = Astro.props
 
 const renderedRichText = renderRichText(blok.Text)
 
-console.log(blok)
 ---
 
 
@@ -15,7 +14,7 @@ console.log(blok)
     <div class="mx-auto px-[30px] justify-center text-black max-w-screen-2xl">
         
         { blok.Alignment == 1 ? ( 
-        <div class="grid grid-cols-6 gap-5"> 
+        <div class="grid grid-cols-6 gap-5">  
             <div class="col-span-2">
                 { blok.Button.cached_url ? (
                         <a class="button hollow" href={blok.Button.cached_url}>
