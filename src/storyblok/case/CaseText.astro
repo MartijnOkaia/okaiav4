@@ -6,17 +6,22 @@ const { blok } = Astro.props
 
 const renderedRichText = renderRichText(blok.Text)
 
+console.log(blok)
 ---
 
 
 <div {...storyblokEditable(blok)} class="title-block my-36">
 
     <div class="mx-auto px-[30px] justify-center text-black max-w-screen-2xl">
-        <div class="grid grid-cols-6 gap-5">
+        
+        { blok.Alignment == 1 ? ( 
+        <div class="grid grid-cols-6 gap-5"> 
             <div class="col-span-2">
-                <a class="button hollow" href={blok.Button.cached_url}>
-                    <span>{blok.Button.title}</span>
-                  </a>
+                { blok.Button.cached_url ? (
+                        <a class="button hollow" href={blok.Button.cached_url}>
+                            <span>{blok.Button.title}</span>
+                        </a>
+                ) : (null)}
             </div>
             <div class="col-span-1">
                <div class="text-sm uppercase">
@@ -31,6 +36,27 @@ const renderedRichText = renderRichText(blok.Text)
             </div>
             
         </div>
+        ) : (
+        <div class="grid grid-cols-6 gap-5">
+            
+            <div class="col-span-4 col-start-2">
+               <div class="text-sm uppercase">
+                    {blok.Subtitle}
+               </div>
+                <h2 class="animate text-xl 2xl:text-xxl max-w-[770px] 2xl:max-w-[900px] font-medium inline-block mb-8">
+                    {blok.Title}
+                </h2>
+                <div class=" prose" set:html={renderedRichText} />
+                { blok.Button.cache_url ? (
+                    <a class="button hollow" href={blok.Button.cached_url}>
+                        <span>{blok.Button.title}</span>
+                    </a>
+                ) : (null)}
+            </div>
+
+        </div>
+        )}
+
     </div>
 
 </div> 

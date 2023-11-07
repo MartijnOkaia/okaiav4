@@ -4,11 +4,6 @@ import { storyblokEditable } from '@storyblok/astro'
 
 const { blok } = Astro.props
 
-const imageUrls = blok.Images.map((ImageItem) => {
-  const url = ImageItem.filename;
-  const fileExtension = url.split('.').pop().toLowerCase();
-  return { url, fileExtension };
-});
 
 // console.log(url)
 

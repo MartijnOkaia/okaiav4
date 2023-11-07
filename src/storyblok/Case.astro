@@ -13,7 +13,7 @@ const fileExtension = url.split('.').pop().toLowerCase();
 
   <div class="relative h-screen items-end flex mb-36 ">
     { fileExtension == 'mp4' ? (
-      <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto absolute h-full w-full object-cover z-index-10">
+      <video width="320" height="240" autoplay playsinline muted loop class=" absolute h-full w-full object-cover z-index-10">
         <source src={blok.Landscape.filename} type="video/mp4" />
       </video>
     ) : (

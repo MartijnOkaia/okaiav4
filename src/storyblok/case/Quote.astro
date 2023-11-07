@@ -1,0 +1,28 @@
+---
+
+import { storyblokEditable, renderRichText } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+
+---
+
+
+<div {...storyblokEditable(blok)} class="title-block my-36">
+
+    <div class="mx-auto px-[30px] justify-center text-black max-w-screen-2xl">
+        
+        <div class="grid grid-cols-6 gap-5">
+            <div class="col-span-3 col-start-2">
+               <p class="text-medium text-xl mb-8">
+                    "{blok.Quote}"
+               </p>
+               <p class=" text-sm uppercase">
+                    {blok.Author}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div> 

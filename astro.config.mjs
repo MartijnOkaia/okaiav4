@@ -55,6 +55,7 @@ export default defineConfig({
         CaseText: "storyblok/case/CaseText",
         Marquee: "storyblok/case/Marquee",
         Parallax: "storyblok/case/Parallax",
+        Quote: "storyblok/case/Quote",
 
       },
     }),
