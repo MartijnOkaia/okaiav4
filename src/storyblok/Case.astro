@@ -4,7 +4,7 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 
 const { blok } = Astro.props
 
-const url = blok.image.filename; // Replace with your actual URL
+const url = blok.Landscape.filename; // Replace with your actual URL
 const fileExtension = url.split('.').pop().toLowerCase();
 
 ---
@@ -14,10 +14,10 @@ const fileExtension = url.split('.').pop().toLowerCase();
   <div class="relative h-screen items-end flex mb-36 ">
     { fileExtension == 'mp4' ? (
       <video width="320" height="240" autoplay playsinline muted loop class="w-full h-auto absolute h-full w-full object-cover z-index-10">
-        <source src={blok.image.filename} type="video/mp4" />
+        <source src={blok.Landscape.filename} type="video/mp4" />
       </video>
     ) : (
-        <img src={`${blok.image.filename}/m/1900x0/smart`} lazy="true" class=" h-full w-full absolute object-cover z-index-10" />
+        <img src={`${blok.Landscape.filename}/m/1900x0/smart`} lazy="true" class=" h-full w-full absolute object-cover z-index-10" />
     )}
     <div class="mx-auto px-[30px] z-20 w-full max-w-screen-2xl">
       <h1 class="text-white mb-8 text-xxxl font-medium">{blok.title}</h1>
