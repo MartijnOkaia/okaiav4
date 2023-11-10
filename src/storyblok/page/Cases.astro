@@ -37,7 +37,7 @@ storiesData.forEach(entry => {
 const posts = storiesData.map(story => {
   return {
     title: story.content.title,
-    description: story.content.description,
+    description: story.content.description.replace(/\[(.*?)\]/g, '<u>$1</u>'),
     Landscape: story.content.Landscape,
     Portrait: story.content.Portrait,
     slug: story.full_slug,
@@ -88,9 +88,13 @@ const posts = storiesData.map(story => {
           <div class="flex-1">
             <h2 class="animate text-lg text-black font-medium">{blok.Title}</h2>
           </div>
+          { blok.Columns == 3 ? (
           <div class="flex-1 flex justify-end	">
             <a href="" class="button hollow self-end"><span>Find out more</span></a>
           </div>
+          ) : (
+            null
+          )}
         </div>
 
         <ul class={`grid grid-cols-${blok.Columns} gap-5`}>
@@ -125,20 +129,22 @@ const posts = storiesData.map(story => {
                     </div>
                   </div>
                 ) : (
-                  <div class="group">
+                  <div class="group mb-12">
                     <h3 class=" animate text-md mb-4 relative overflow-hidden">
-                      <span class="group-hover:-translate-y-8 block  transition-slow">{post.description}</span>
-                      <span class="absolute top-8 left-0 transition-slow group-hover:top-0 underline">{post.description}</span>
+                      <span class="group-hover:-translate-y-8 block  transition-slow"  set:html={post.description} ></span>
+                      <span class="absolute top-8 left-0 transition-slow group-hover:top-0" set:html={post.description} ></span>
                     </h3>
                     
+                    <div class="overflow-hidden rounded-lg">
                     { post.Landscape.filename && post.Landscape.filename.toLowerCase().includes('.mp4') ? (
                         
-                        <video width="320" height="240" autoplay playsinline muted loop class="w-full rounded-lg aspect-[12/9] group-hover:scale-105 object-cover transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
+                        <video width="320" height="240" autoplay playsinline muted loop class="w-full  aspect-[12/9] group-hover:scale-105 object-cover transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
                           <source src={post.Landscape.filename} type="video/mp4"/>
                         </video>
                       ) : (
-                        <img src={`${post.Landscape.filename}/m/1200x0/smart`} lazy="true" class="rounded-lg aspect-[12/9] w-full object-cover mb-8 hover-target" />
+                        <img src={`${post.Landscape.filename}/m/1200x660/smart`} lazy="true" class="rounded-lg aspect-[12/9] w-full object-cover mb-8 hover-target" />
                       )}
+                      </div>
                   </div>
                 )}
               </a>
