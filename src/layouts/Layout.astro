@@ -35,6 +35,8 @@ if(HeaderStyle == 'light' ){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+        <!-- <link rel="preload" href="./assets/fonts/Okaia.woff2" as="font" type="font/woff2" crossorigin> -->
+
         <link rel="sitemap" href="/sitemap-index.xml" />
 
     </head>
@@ -192,8 +194,8 @@ if(HeaderStyle == 'light' ){
 
     @font-face {
 		font-family: 'Okaia';
-		src: url('/fonts/Okaia.woff') format('woff');
 		src: url('/fonts/Okaia.woff2') format('woff2');
+        font-display: swap;
 	}
 
     .button {
@@ -206,7 +208,6 @@ if(HeaderStyle == 'light' ){
         display: inline-block;
         transition:  0.350s cubic-bezier(1, -0.01, 0.31, 0.99);
     }
-
 
     .button.hollow {
         @apply bg-transparent text-black;
