@@ -51,10 +51,11 @@ const { data } = await storyblokApi.get(
 )
   
 const story = data.story
+console.log(data.story);
 
 ---
 
-<Layout title="Okaia - creative digital agency" otherSlug="aa" HeaderStyle={story.content.HeaderStyle}>
+<Layout title={story.name} otherSlug="aa" HeaderStyle={story.content.HeaderStyle}>
 
     <StoryblokComponent blok={story.content} />
     

@@ -125,7 +125,7 @@ const posts = storiesData.map(story => {
                           <img class="w-full h-full object-cover" src="https://placebear.com/100/100" alt="" class="rounded-lg"/>
                         </div>
                       </div>
-                      <h3 class="animate text-md group-hover:ml-3 transition-all duration-[450ms] max-w-[calc(100%-75px)] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">{post.description}</h3> 
+                      <h3 class="animate text-md group-hover:ml-3 transition-all duration-[450ms] max-w-[calc(100%-75px)] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" set:html={post.description}></h3> 
                     </div>
                   </div>
                 ) : (

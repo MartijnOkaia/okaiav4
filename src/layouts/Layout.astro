@@ -29,7 +29,7 @@ if(HeaderStyle == 'light' ){
     <head>
 
         <SEO
-        title={title}
+        title={`${title} - Okaia`}
         description="Welcome to the webiste of Okaia!"
         />
         <meta charset="UTF-8">
@@ -85,21 +85,21 @@ if(HeaderStyle == 'light' ){
                                 </>
                             ) : (
                                 <>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/werk/')}>Ons werk</a></li>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/diensten/')}>Diensten</a></li>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/cultuur/')}>Cultuur</a></li>
-                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/contact/')}>Contact</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/werk/')} class={LightHeader ? 'text-white' : 'text-black' }>Ons werk</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/diensten/')} class={LightHeader ? 'text-white' : 'text-black' }>Diensten</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/cultuur/')} class={LightHeader ? 'text-white' : 'text-black' }>Cultuur</a></li>
+                                    <li class="duration-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] hover:-rotate-6" data-cursor-stick><a href={translatePath('/contact/')} class={LightHeader ? 'text-white' : 'text-black' }>Contact</a></li>
                                 </>
                             )}
 
                         </ul>
                     </div>
-                    <div class="grow-0 mr-4 leading-4">
+                    <div class="grow-0 leading-4">
                         <a href="" class="button special">
                             <span>Menu</span>
                         </a>
                     </div>
-                    <div class="grow-0">
+                    <!-- <div class="grow-0">
                         <ul>
                             { lang === 'en'  ? (
                                 <>
@@ -112,7 +112,7 @@ if(HeaderStyle == 'light' ){
                               )}
 
                         </ul>
-                    </div>
+                    </div> -->
                      <!-- <div class="grow-0 mr-8">
                         <ul class="flex gap-2"> 
                             <li class={lang === 'nl' ? '' : 'opacity-50'}>
