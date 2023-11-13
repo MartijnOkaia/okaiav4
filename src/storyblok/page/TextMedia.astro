@@ -11,22 +11,22 @@ const fileExtension = url.split('.').pop().toLowerCase();
 ---
 
 
-<div {...storyblokEditable(blok)} class={`title-block py-28 bg-white`}>
+<div {...storyblokEditable(blok)} class={`title-block my-28 `}>
 
     <div class="mx-auto px-[30px] ">
 
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-5">
                 {blok.Title ? (
-                    <h2 class=" text-xl "></h2>
-                    ):(null)}
+                    <h2 class="text-h4"></h2>
+                ):(null)}
             
-                    <div class="text-md prose mb-8 " set:html={renderedRichText} />
-            
-                    <p class="text-base">
-                        {blok.Subtitle}
-                    </p>
-                    {blok.Button ? (
+                <div class="text-md prose mb-8 " set:html={renderedRichText} />
+        
+                <p class="text-base">
+                    {blok.Subtitle}
+                </p>
+                {blok.Button ? (
                         <a class="button ml-8 translate-y-3" href={blok.button.cached_url}><span>{blok.buttonText}</span></a>
                 ):(null)}
             </div>

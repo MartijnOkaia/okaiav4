@@ -12,7 +12,7 @@ const { blok } = Astro.props
 
     <div class="mx-auto px-[30px] text-black">
 
-        <div class="case-marquee inline-flex w-full text-xxxxl uppercase gap-20 leading-none ">
+        <div class="case-marquee inline-flex w-full text-h1 uppercase gap-20 leading-none ">
             {blok.Items && blok.Items.length > 0 && blok.Items.map((MarqueeItem, index) => (
                 <div class="marquee-item  flex-none inline-block relative">{MarqueeItem.Title}</div>
             ))}

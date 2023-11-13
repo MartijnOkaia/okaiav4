@@ -1,3 +1,42 @@
-<div class="px-[30px]">
-    Scccroooolller.
-</div>
+---
+
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+
+---
+
+
+<div {...storyblokEditable(blok)} class="my-28">
+    
+    <div class="mx-auto px-[30px] mb-24">
+
+        <div class="grid grid-cols-12 mb-6 items-start gap-10">
+            <div class="col-span-2">
+                <h2 class="animate text-sm uppercase ">[{blok.Title}]</h2>
+            </div>
+            <div class="col-span-4">
+                <p class="">{blok.Text}</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12">
+            <div class="col-span-2"></div>
+            <div class="col-span-4"></div>
+            <div class="col-span-5 col-start-8">
+              {blok.Items && blok.Items.length > 0 && blok.Items.map((Item) => (
+                <div class="my-12">
+                  <div class="inner transition">
+                    <h3 class="text-h2 mb-4 font-medium">{Item.Title}</h3>
+                    <p class="text-base">{Item.Text}</p>
+                  </div>
+                </div>
+                <a class="button hollow" href={`/${Item.Button.story.url}`}><span>Meer {Item.Button.story.name}</span></a>
+              ))}
+            </div>
+
+        </div>
+        
+    </div>
+
+</div> 

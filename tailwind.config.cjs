@@ -25,15 +25,22 @@ module.exports = {
       blue: "#0057FF"
     },
     fontSize: {
+
       sm: ["14px", "20px"],
       base: ["20px", "130%"],
       md: ["26px", "33px"],
-      
       lg: ["40px", "100%"],
-      xl: ["50px", "100%"],
-      xxl: ["60px", "100%"],
-      xxxl: ["80px", "78px"],
-      xxxxl: ["120px", "100%"],
+      
+
+      h1xl: ["120px", "100%"],
+      h1: ["80px", "78px"],
+      h2: ["60px", "100%"],
+      h3: ["50px", "100%"],
+      h4: ["40px", "100%"],
+      h5: ["30px", "100%"],
+      h6: ["20px", "100%"],
+
+      
     },
     fontWeight: {
       base: 'normal',
@@ -43,7 +50,7 @@ module.exports = {
       DEFAULT: "10px",
       lg: "20px",
       xl: "40px",
-      xxl: "50px",
+      h3: "50px",
       full: "50%"
     },
     fontFamily: {
@@ -67,6 +74,9 @@ module.exports = {
   safelist: [
     "bg-white",
     "grid-cols-2",
-    "grid-cols-3"
+    "grid-cols-3",
+    "lg:text-h1",
+    "lg:text-h2",
+    "lg:text-h3",
   ],
 };

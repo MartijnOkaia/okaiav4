@@ -7,11 +7,12 @@ const { blok } = Astro.props
 ---
 
 
-<div {...storyblokEditable(blok)} class={`title-block py-28 bg-${blok.background}`}>
+<div {...storyblokEditable(blok)} class={`title-block pt-28 mb-28`}>
 
     <div class="mx-auto px-[30px] ">
 
-        <h1 class="animate text-xl 2xl:text-xxl max-w-[770px] 2xl:max-w-[900px] font-medium inline-block text-black">
+        <h1 class={`animate text-h4 lg:text-${blok.TitleSize} max-w-[770px] 2xl:max-w-[900px] font-medium inline-block text-black`}>
+
             {blok.title}
 
             { blok.buttonText ? (
