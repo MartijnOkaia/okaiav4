@@ -7,7 +7,7 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "dev": "PUBLIC_ENV=development astro dev",
-    "build:production": "PUBLIC_ENV=production astro build",
+    "build:production": "PUBLIC_ENV=production astro build && pagefind --site dist",
     "build:preview": "PUBLIC_ENV=preview astro build",
     "astro": "astro"
   },
