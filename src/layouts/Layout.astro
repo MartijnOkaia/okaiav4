@@ -147,10 +147,12 @@ if(HeaderStyle == 'light' ){
 
     // clear the old results
     document.querySelector('#results').innerHTML = ''
-
+    console.log('hoi')
     // add the new results
     for (const result of search.results) {
+        console.log('jup!')
       const data = await result.data()
+      console.log('data' + data)
       document.querySelector('#results').innerHTML += `
         <a href="${data.url}">
           <h3>${data.meta.title}</h3>
