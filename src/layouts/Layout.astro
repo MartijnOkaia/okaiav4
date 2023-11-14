@@ -174,12 +174,18 @@ if(HeaderStyle == 'light' ){
         <link href="/pagefind/pagefind-ui.css" rel="stylesheet" >
         <script src="/pagefind/pagefind-ui.js" is:inline></script>
         
+        <div id="ui"></div>
 
         <input class="my-40" id="search" type="text" placeholder="Search...">
 
+        
         <div id="results" />
     
         <script is:inline>
+
+        new PagefindUI({ element: "#ui", showEmptyFilters: true });
+ });
+
         document.querySelector('#search')?.addEventListener('input', async (e) => {
 
             if (e.target.dataset.loaded !== 'true') {
