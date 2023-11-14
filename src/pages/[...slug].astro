@@ -18,7 +18,7 @@ export async function getStaticPaths() {
   links = Object.values(links)
 
   return links
-  .filter((link) => !link.is_folder)
+  .filter((link) => !link.is_folder && !link.slug.includes('team/'))
   .map((link) => {
 
     const cleanedSlug = link.slug.replace(/^landing\//, '');
