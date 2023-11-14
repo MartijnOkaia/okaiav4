@@ -1,3 +1,5 @@
+import { useStoryblokApi } from '@storyblok/astro';
+
 export const languages = {
   nl: "Nederlands",
   en: "English",
@@ -22,3 +24,21 @@ export function useTranslatedPath(lang: keyof typeof ui) {
     return !showDefaultLang && l === defaultLang ? path : `/${l}${path}`;
   };
 }
+
+export const fetchStories = async (contentType, language) => {
+
+    const storyblokApi = useStoryblokApi();
+
+    try {
+        const { data } = await storyblokApi.get('cdn/stories', {
+            version: process.env.PUBLIC_ENV !== 'production' ? 'draft' : 'published',
+            content_type: contentType,
+            language: language,
+        });
+
+        return data.stories;
+    } catch (error) {
+        console.error('Error fetching stories from Storyblok:', error);
+        return []; // or handle the error as appropriate
+    }
+};
