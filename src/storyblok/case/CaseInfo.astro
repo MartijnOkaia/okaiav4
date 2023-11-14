@@ -23,7 +23,7 @@ const renderedRichText = renderRichText(blok.Text)
           </div>
           <div class="col-span-3">
             {blok.Services && blok.Services.length > 0 && blok.Services.map((ServiceItem) => (
-                <div class="text-md">{ServiceItem.Title}</div>
+                <div class="text-md" data-pagefind-filter="service">{ServiceItem.Title}</div>
             ))}
           </div>
           <div>

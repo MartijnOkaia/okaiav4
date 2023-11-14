@@ -171,6 +171,9 @@ if(HeaderStyle == 'light' ){
         </footer>
     
 
+        <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+        <script src="/pagefind/pagefind-ui.js"></script>
+        
 
         <input class="my-40" id="search" type="text" placeholder="Search...">
 
@@ -178,31 +181,25 @@ if(HeaderStyle == 'light' ){
     
         <script is:inline>
         document.querySelector('#search')?.addEventListener('input', async (e) => {
-            // only load the pagefind script once
+
             if (e.target.dataset.loaded !== 'true') {
-            e.target.dataset.loaded = 'true'
-            // load the pagefind script
-            window.pagefind = await import("/pagefind/pagefind.js");
+                e.target.dataset.loaded = 'true'
+                window.pagefind = await import("/pagefind/pagefind.js");
             }
-    
-            console.log(e.target.value)
-    
-            // search the index using the input value
+        
             const search = await window.pagefind.search(e.target.value)
     
-            // clear the old results
             document.querySelector('#results').innerHTML = ''
-            console.log('hoi')
-            // add the new results
+
             for (const result of search.results) {
-                console.log('jup!')
-            const data = await result.data()
-            console.log('data' + data)
-            document.querySelector('#results').innerHTML += `
+
+                const data = await result.data()
+
+                document.querySelector('#results').innerHTML += `
                 <div class="my-4">
-                <a href="${data.url}">
-                <h3 class="text-h3 font-medium">${data.meta.title}</h3>
-                </a>
+                    <a href="${data.url}">
+                        <h3 class="text-h3 font-medium">${data.meta.title}</h3>
+                    </a>
                 </div>`
             }
         })
