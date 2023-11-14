@@ -10,8 +10,7 @@ export async function getStaticPaths() {
   const storyblokApi = useStoryblokApi()
  
   const { data } = await storyblokApi.get('cdn/links', {
-    version: "draft"
-    //version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published"
+    version: process.env.PUBLIC_ENV !== 'production' ? "draft" : "published"
   })
   let links = data.links
 
