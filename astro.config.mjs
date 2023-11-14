@@ -9,8 +9,6 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import robotsTxt from "astro-robots-txt";
 
-import orama from '@orama/plugin-astro'
-
 import swup from '@swup/astro';
 
 import { loadEnv } from "vite";
@@ -75,14 +73,7 @@ export default defineConfig({
     // swup({ 
     //   theme: false, 
     //   globalInstance: true 
-    // }),
-    orama({
-      mydb: {
-        // Required. Only pages matching this path regex will be indexed
-        pathMatcher: /\/[0-9]{4}\/[0-9]{2}\/[0-9]{2}\/.+$/,
-        language: 'dutch',
-      },
-    }),
+    // })
   ],
   vite: {
     plugins: [basicSsl()],
