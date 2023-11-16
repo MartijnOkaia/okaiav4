@@ -3,6 +3,7 @@
 import { storyblokEditable, renderRichText } from '@storyblok/astro'
 
 const { blok } = Astro.props
+
 const renderedRichText = renderRichText(blok.Text)
 
 const url = blok.Media.filename; // Replace with your actual URL
@@ -18,7 +19,8 @@ const fileExtension = url.split('.').pop().toLowerCase();
         <div class="grid grid-cols-12 gap-5">
             <div class="col-span-5">
                 {blok.Title ? (
-                    <h2 class="text-h4"></h2>
+             
+                    <h2 class={`text-h4 lg:text-${blok.TitleSize}`}>{blok.Title}</h2>
                 ):(null)}
             
                 <div class="text-md prose mb-8 " set:html={renderedRichText} />

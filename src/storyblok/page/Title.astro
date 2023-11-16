@@ -12,10 +12,9 @@ const { blok } = Astro.props
     <div class="mx-auto px-[30px] ">
 
         <h1 class={`animate text-h4 lg:text-${blok.TitleSize} max-w-[770px] 2xl:max-w-[900px] font-medium inline-block text-black`}>
-
+          
             {blok.title}
-
-            { blok.buttonText && <a class="button special mt-6 table" href={blok.button.cached_url}><span>{blok.buttonText}</span></a> }
+            {blok.button.title && <a class="button special mt-6 table" href={blok.button.cached_url}><span>{blok.button.title}</span></a> }
 
         </h1>
 

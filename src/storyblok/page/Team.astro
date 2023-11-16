@@ -13,14 +13,14 @@ const { blok } = Astro.props
 console.log(teamMembers);
 
 
+ 
 ---
 
 <div {...storyblokEditable(blok)} class="my-24">
-
     <div class="mx-auto px-[30px]">
-
+        {blok.Title && 
         <h2 class="text-h2 font-medium max-w-[1200px] mb-20">{blok.Title}</h2>
-
+        }
         <div class="grid grid-cols-4 gap-5">
             
         {teamMembers.map(member => (
@@ -32,9 +32,13 @@ console.log(teamMembers);
                         </div>
                         <div class="absolute inset-0 bg-black rounded-lg opacity-0 group-hover:opacity-30 transition-slow"></div>
                     )}
-                    <img src={member.content.Image.filename + '/m/800x0/smart'} class="rounded lg:rounded-lg" />
+                        {member.content.Image.filename ? (
+                        <img src={member.content.Image.filename + '/m/800x0/smart'} class="rounded lg:rounded-lg" />
+                        ) : (
+                            <img  class="rounded lg:rounded-lg" src="/default_image.jpg"/>
+                        )}
                 </div>
-                <p class="mt-4">{member.name}</p> 
+                <p class="mt-4">{member.content.Name}</p> 
             </div>
         ))}
         

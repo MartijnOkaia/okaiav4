@@ -1,6 +1,15 @@
-<div class="dragContainer w-full h-screen bg-black  relative flex items-center justify-center">
+---
 
-    <h1 class="text-white text-h3 font-medium relative z-[2000] text-center pointer-events-none">Your brand, our world.<br />We are Okaia.</h1>
+import { storyblokEditable } from '@storyblok/astro'
+
+const { blok } = Astro.props
+// console.log(blok);
+---  
+
+<di {...storyblokEditable(blok)} class="dragContainer w-full h-screen bg-black  relative flex items-center justify-center">
+{/* Assuming 'blok.Title' contains the text with line breaks */}
+
+    <h1 class="text-white text-h3 font-medium relative z-[2000] text-center pointer-events-none"> {blok.Title}</h1>
     <div class="dragElement aspect-square bg-pink w-[330px] rounded-lg absolute top-[10%] left-[40%] rotate-6 flex items-center justify-center">
       <svg width="304" height="294" viewBox="0 0 304 294" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_2377_1457)">
