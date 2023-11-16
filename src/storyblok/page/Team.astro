@@ -10,6 +10,9 @@ const teamMembers = await fetchStories('team', lang);
 
 const { blok } = Astro.props
 
+console.log(teamMembers);
+
+
 ---
 
 <div {...storyblokEditable(blok)} class="my-24">
@@ -29,9 +32,9 @@ const { blok } = Astro.props
                         </div>
                         <div class="absolute inset-0 bg-black rounded-lg opacity-0 group-hover:opacity-30 transition-slow"></div>
                     )}
-                    <img src={member.content.Image.filename + '/m/800x0/smart'} class="rounded-lg" />
+                    <img src={member.content.Image.filename + '/m/800x0/smart'} class="rounded lg:rounded-lg" />
                 </div>
-                <p class="mt-4">{member.name}</p>
+                <p class="mt-4">{member.name}</p> 
             </div>
         ))}
         
