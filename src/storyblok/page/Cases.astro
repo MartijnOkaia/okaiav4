@@ -56,12 +56,12 @@ const posts = storiesData.map(story => {
   <!-- Display the list of tags for filtering -->
   {blok.Columns < 3 ? (
 
-    <div class=" bottom-4 fixed w-full mx-auto justify-center flex px-[30px] w-100 ">
+    <div class=" bottom-4 fixed w-full mx-auto justify-center flex px-[30px] w-100 hidden">
       
         <div id="tagFilter" class="rounded-[20px] bg-black inline-flex p-[4px] gap-1">
           
           <div class="cat px-[19px] py-[17px] leading-none rounded-[16px] bg-darkGrey text-black ">
-              <span class="text-[16px] weight-450  leading-none ">Filters</span>
+              <span class="text-[16px] weight-450 leading-none ">Filters</span>
           </div>
   
           <div class="rounded-[16px] bg-beige p-[4px] inline-flex gap-1 bg-opacity-25">
@@ -100,7 +100,7 @@ const posts = storiesData.map(story => {
         <ul class={`grid grid-cols-${blok.Columns} gap-5`}>
           {posts.map(post => (
             <li class="flex-1">
-              <a href={`/${post.slug}`} class={`cursor-none group  scale-50 py-20 bg-${blok.background}`}>
+              <a href={`/${post.slug}`} class={`group scale-50 py-20 bg-${blok.background}`}>
                 
                 { blok.Columns == 3 ? (
                   <div>
@@ -130,8 +130,8 @@ const posts = storiesData.map(story => {
                   </div>
                 ) : (
                   <div class="group mb-12">
-                    <h3 class=" animate text-md mb-4 relative overflow-hidden">
-                      <span class="group-hover:-translate-y-8 block  transition-slow"  set:html={post.description} ></span>
+                    <h3 class=" animate text-md mb-4 relative overflow-hidden h-[33px]">
+                      <span class="group-hover:-translate-y-8 block transition-slow h-[33px] overflow-hidden"  set:html={post.description} ></span>
                       <span class="absolute top-8 left-0 transition-slow group-hover:top-0" set:html={post.description} ></span>
                     </h3>
                     
@@ -158,56 +158,55 @@ const posts = storiesData.map(story => {
 
 <script>
 
+// import { gsap } from "gsap";
 
-import { gsap } from "gsap";
+// document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded', function() {
+// const customCursor = document.getElementById('custom-cursor');
 
-const customCursor = document.getElementById('custom-cursor');
-
-window.addEventListener('load', function(e) {
+// window.addEventListener('load', function(e) {
   
-  const customCursor = document.getElementById('custom-cursor');
+//   const customCursor = document.getElementById('custom-cursor');
   
-  gsap.set(customCursor, {
-      x: e.clientX,
-      y: e.clientY,
-      opacity: 0
-    });
-  });
+//   gsap.set(customCursor, {
+//       x: e.clientX,
+//       y: e.clientY,
+//       opacity: 0
+//     });
+//   });
 
 
-  document.querySelectorAll('.hover-target').forEach(el => {
+//   document.querySelectorAll('.hover-target').forEach(el => {
 
-    document.addEventListener('mousemove', (e) => {
-      gsap.set(customCursor, {
-        x: e.clientX,
-        y: e.clientY,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    });
+//     document.addEventListener('mousemove', (e) => {
+//       gsap.set(customCursor, {
+//         x: e.clientX,
+//         y: e.clientY,
+//         duration: 0.3,
+//         ease: 'power2.out'
+//       });
+//     });
 
-    el.addEventListener('mouseenter', () => {
-      gsap.to(customCursor, {
-        scale: 1,
-        duration: 0.3,
-        ease: 'power2.out',
-        opacity: 100,
-        overwrite: true
-      });
-    });
+//     el.addEventListener('mouseenter', () => {
+//       gsap.to(customCursor, {
+//         scale: 1,
+//         duration: 0.3,
+//         ease: 'power2.out',
+//         opacity: 100,
+//         overwrite: true
+//       });
+//     });
 
-    el.addEventListener('mouseleave', () => {
-      gsap.to(customCursor, {
-        scale: 0.1, 
-        duration: 0.3,
-        ease: 'power2.out',
-        opacity: 0,
-        overwrite: true
-      });
-    });
-  });
-  });
+//     el.addEventListener('mouseleave', () => {
+//       gsap.to(customCursor, {
+//         scale: 0.1, 
+//         duration: 0.3,
+//         ease: 'power2.out',
+//         opacity: 0,
+//         overwrite: true
+//       });
+//     });
+//   });
+//   });
 
 </script>

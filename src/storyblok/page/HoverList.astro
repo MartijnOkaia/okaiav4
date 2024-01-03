@@ -14,11 +14,13 @@ import localArrowRight from '../../img/icons/arrow-right.svg';
     .left.active video {
         transform: scale(1) translateY(0);
         z-index: 20;
+        opacity: 1;
     } 
 
     .left video{
         transform: scale(0.5) translateY(10px);
         transform-origin: center;
+        opacity: 0;
     }
     .left .inner {
         opacity: 0;
@@ -55,7 +57,7 @@ import localArrowRight from '../../img/icons/arrow-right.svg';
             <div class="flex-1 flex justify-end	">
                 <a href="" class="text-link flex hollow self-end text-medium text-base font-weight-450">
                   <img src={localArrowRight.src} width="24px" height="24px" alt="Arrow right">
-                  <span>Find out more</span>
+                  <span>Over onze diensten</span>
                 </a>
             </div>
         </div>
@@ -102,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const leftItems = document.querySelectorAll(".left-column .left");
   const rightTitles = document.querySelectorAll(".right-column .right-title");
 
-  // Show the first left item and add active class to the first title initially
   leftItems[0].classList.add("active");
   rightTitles[0].classList.add("active");
 

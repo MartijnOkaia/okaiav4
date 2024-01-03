@@ -4,6 +4,8 @@ import { storyblokEditable } from '@storyblok/astro'
 
 const { blok } = Astro.props
 
+// console.log(blok.Items[0].Case.content.Portrait.filename);
+
 ---
 
 
@@ -21,19 +23,51 @@ const { blok } = Astro.props
         </div>
 
         <div class="grid grid-cols-12">
-            <div class="col-span-2"></div>
-            <div class="col-span-4"></div>
-            <div class="col-span-5 col-start-8">
-              {blok.Items && blok.Items.length > 0 && blok.Items.map((Item) => (
-                <div class="my-12">
-                  <div class="inner transition">
-                    <h3 class="text-h2 mb-4 font-medium">{Item.Title}</h3>
-                    <p class="text-base">{Item.Text}</p>
-                  </div>
-                </div>
-                <a class="button hollow" href={`/${Item.Button.story.url}`}><span>Meer {Item.Button.story.name}</span></a>
-              ))}
+
+          {blok.Items && blok.Items.length > 0 && blok.Items.map((Item) => (
+
+            <div class="col-span-2">
+            
             </div>
+            <div class="col-span-4">
+            
+              <div class="relative rounded-lg overflow-hidden hover-target rotate-[-4deg] mt-16" >
+                
+                { Item.Case && Item.Case.content.Portrait.filename.toLowerCase().includes('.mp4') ? (
+                  <video width="320" height="240" autoplay playsinline muted loop class="w-full rounded-lg aspect-[45/66] group-hover:scale-105 object-cover transition-all duration-[450ms] ease-[cubic-bezier(0.95,0.05,0.795,0.035)]">
+                    <source src={ Item.Case.content.Portrait.filename} type="video/mp4"/>
+                  </video>
+                ) : (
+                  <></>
+                )}
+
+              </div>
+
+            </div>
+            <div class="col-span-5 col-start-8">
+
+              <div class="mb-24">
+
+                  <div class="my-12">
+                    <div class="inner transition">
+                      <h3 class="text-h2 mb-4 font-medium">{Item.Title}</h3>
+                      <p class="text-md mb-8">{Item.Subtitle}</p>
+                      <p class="text-base">{Item.Text}</p>
+                    </div>
+                  </div>
+                  <a class="button hollow" href={`/${Item.Button.story.url}`}><span>Meer {Item.Button.story.name.toLowerCase()}</span></a>
+                  <ul class="ml-8 mt-8">
+                    {Item.List && Item.List.length > 0 && Item.List.map((listItem) => (
+                      <li>
+                        {listItem.Title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+              </div>
+
+          ))}
 
         </div>
         
