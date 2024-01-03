@@ -30,7 +30,6 @@ module.exports = {
       base: ["20px", "130%"],
       md: ["26px", "33px"],
       lg: ["40px", "100%"],
-      
 
       h1xl: ["120px", "100%"],
       h1: ["80px", "78px"],
@@ -40,7 +39,6 @@ module.exports = {
       h5: ["30px", "100%"],
       h6: ["20px", "100%"],
 
-      
     },
     fontWeight: {
       base: 'normal',

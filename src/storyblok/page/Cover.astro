@@ -6,10 +6,9 @@ const { blok } = Astro.props
 
 ---  
 
-<di {...storyblokEditable(blok)} class="dragContainer w-full h-screen bg-black  relative flex items-center justify-center">
-{/* Assuming 'blok.Title' contains the text with line breaks */}
+<di {...storyblokEditable(blok)} class="dragContainer w-full h-screen bg-black relative flex items-center justify-center overflow-hidden">
 
-    <h1 class="text-white text-h3 font-medium relative z-[2000] text-center pointer-events-none"> {blok.Title}</h1>
+    <h1 class="text-white text-h1 font-medium relative z-[2000] text-center pointer-events-none max-w-[1000px]"> {blok.Title}</h1>
     <div class="dragElement aspect-square bg-pink w-[330px] rounded-lg absolute top-[10%] left-[40%] rotate-6 flex items-center justify-center">
       <svg width="304" height="294" viewBox="0 0 304 294" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_2377_1457)">
@@ -25,7 +24,7 @@ const { blok } = Astro.props
         </defs>
         </svg>        
     </div>
-    <div class="dragElement aspect-square bg-green w-[330px] rounded-lg absolute top-[30%] left-[20%] -rotate-6 flex items-center justify-center">
+    <div class="dragElement aspect-square bg-green w-[330px] rounded-lg absolute top-[30%] left-[10%] -rotate-6 flex items-center justify-center">
       <svg width="284" height="284" viewBox="0 0 284 284" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="77.6775" cy="77.6773" r="77.5664" fill="#D9D9D9"/>
         <circle cx="77.6775" cy="205.544" r="77.5664" fill="#D9D9D9"/>
@@ -33,10 +32,10 @@ const { blok } = Astro.props
         <circle cx="205.545" cy="205.544" r="77.5664" fill="#D9D9D9"/>
         </svg>        
     </div>
-    <div class="dragElement aspect-square bg-blue w-[330px] rounded-lg absolute top-[45%] left-[55%] rotate-12">
+    <div class="dragElement aspect-square bg-blue w-[330px] rounded-lg absolute top-[45%] left-[65%] rotate-12">
       <img src="/okaiamask.png" class="w-full h-full p-12 object-contain" alt="">
     </div>
-    <div class="dragElement aspect-square bg-blue w-[330px] rounded-full absolute top-[40%] left-[40%] rotate-12 bg-gradient-to-b from-green to-pink"></div>
+    <div class="dragElement aspect-square w-[330px] rounded-full absolute top-[55%] left-[40%] rotate-12 bg-gradient-to-b from-green to-pink"></div>
 </div>
 
 <script>

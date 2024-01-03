@@ -9,26 +9,14 @@ const renderedRichText = renderRichText(blok.Text)
 ---
 
 
-<div {...storyblokEditable(blok)} class="title-block py-28">
+<div {...storyblokEditable(blok)} class="my-28">
 
-    <div class="mx-auto px-[30px] ">
-
-        <h1 class="animate text-h4 2xl:text-h3 max-w-[770px] 2xl:max-w-[900px] font-medium inline-block text-black">
-            {blok.Title}
-        </h1>
-
-    </div>
 
     <div class="mx-auto px-[30px] justify-center">
-        <div class="grid grid-cols-4">
-            <div class="cols-2 prose" set:html={renderedRichText} />
+        <div class="grid grid-cols-12">
+            <div class="col-span-8 col-start-3 prose text-h4" set:html={renderedRichText} />
         </div>
     </div>
 
 </div> 
 
-<style is:global>
-    main > div:first-of-type.title-block{
-        padding-top: 10rem !important;
-    }
-</style>
