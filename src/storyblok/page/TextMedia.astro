@@ -17,9 +17,8 @@ const fileExtension = url.split('.').pop().toLowerCase();
     <div class="mx-auto px-[30px] ">
 
         <div class="grid grid-cols-12 gap-5">
-            <div class="col-span-5">
+            <div class={`${blok.Design === 'text_end' ? 'col-span-6 order-2 col-start-7 self-end' : 'col-span-5 '}`}>
                 {blok.Title ? (
-             
                     <h2 class={`text-h4 lg:text-${blok.TitleSize}`}>{blok.Title}</h2>
                 ):(null)}
             
@@ -32,7 +31,7 @@ const fileExtension = url.split('.').pop().toLowerCase();
                         <a class="button ml-8 translate-y-3" href={blok.button.cached_url}><span>{blok.buttonText}</span></a>
                 ):(null)}
             </div>
-            <div class="col-span-6 col-start-7">
+            <div class={`${blok.Design === 'text_end' ? 'col-span-5 order-1' : 'col-span-6 col-start-7'}`}>
                 { fileExtension == 'mp4' ? (
                     <video autoplay playsinline muted loop class="w-full object-cover z-index-10 rounded">
                         <source src={blok.Media.filename} type="video/mp4" />

@@ -11,10 +11,9 @@ const renderedRichText = renderRichText(blok.Text)
 
 <div {...storyblokEditable(blok)} class="my-28">
 
-
     <div class="mx-auto px-[30px] justify-center">
         <div class="grid grid-cols-12">
-            <div class="col-span-8 col-start-3 prose text-h4" set:html={renderedRichText} />
+            <div class="col-span-8 col-start-3 prose text-h4 font-medium" set:html={renderedRichText} />
         </div>
     </div>
 

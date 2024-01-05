@@ -31,6 +31,8 @@ module.exports = {
       md: ["26px", "33px"],
       lg: ["40px", "100%"],
 
+      menu: ["18px", "100%"],
+
       h1xl: ["120px", "100%"],
       h1: ["80px", "78px"],
       h2: ["60px", "100%"],
@@ -41,7 +43,7 @@ module.exports = {
 
     },
     fontWeight: {
-      base: 'normal',
+      base: '350',
       medium: '460',
     },
     borderRadius: {
