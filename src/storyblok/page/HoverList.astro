@@ -47,17 +47,17 @@ import localArrowRight from '../../img/icons/arrow-right.svg';
 
         <hr class="mx-auto px-[30px] mb-24 opacity-10"> 
 
-        <div class="grid grid-cols-3 mb-6 items-start gap-10">
-            <div class="flex-1">
+        <div class="grid grid-cols-12 mb-6 items-start gap-10">
+            <div class="col-span-4">
                 <h2 class="animate text-sm uppercase ">{blok.Title}</h2>
             </div>
-            <div class="flex-1">
-                <p class="">{blok.Text}</p>
+            <div class="col-span-4">
+                <p class="ml-2">{blok.Text}</p>
             </div>
-            <div class="flex-1 flex justify-end	">
-                <a href="" class="text-link flex hollow self-end text-medium text-base font-weight-450">
+            <div class="col-span-3 flex justify-end	">
+                <a href="" class="text-link flex hollow self-end font-medium text-base font-weight-450">
                   <img src={localArrowRight.src} width="24px" height="24px" alt="Arrow right">
-                  <span>Over onze diensten</span>
+                  <span class="ml-1">Over onze diensten</span>
                 </a>
             </div>
         </div>
@@ -69,8 +69,8 @@ import localArrowRight from '../../img/icons/arrow-right.svg';
         <div class="grid grid-cols-3 gap-10">
             <div class="left-column relative h-100">
               {blok.Items && blok.Items.length > 0 && blok.Items.map((HoverListItem, index) => (
-                <div class={`left max-w-[80%] h-auto  absolute ${index === 0 ? 'active' : ''}`}>
-                  <video playsinline autoplay loop muted class="-z-1 relative rounded-lg w-full mb-8 transition-slow">
+                <div class={`left max-w-[92%] h-auto  absolute ${index === 0 ? 'active' : ''}`}>
+                  <video playsinline autoplay loop muted class="-z-1 relative rounded w-full mb-8 transition-slow">
                     <source src={HoverListItem.Media.filename} type="video/mp4" />
                   </video>
                   <div class="inner transition">
@@ -85,7 +85,7 @@ import localArrowRight from '../../img/icons/arrow-right.svg';
           
             <div class="col-span-2 right-column">
               {blok.Items && blok.Items.length > 0 && blok.Items.map((HoverListItem, index) => (
-                <h2 class="text-h1 text-black right-title transition cursor-pointer" data-item-index={index}>
+                <h2 class="text-[120px] text-black right-title transition cursor-pointer leading-[100%]" data-item-index={index}>
                   {HoverListItem.Title}
                 </h2>
               ))}
