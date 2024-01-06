@@ -71,9 +71,9 @@ export default defineConfig({
     tailwind(),
     sitemap(),
     swup({ 
-      theme: 'fade',
+      theme: false,
       globalInstance: true,
-      containers: ['main'],
+      containers: ['main', 'header'],
       native: true
     })
   ],

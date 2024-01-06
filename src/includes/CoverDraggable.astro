@@ -69,32 +69,39 @@ import { InertiaPlugin } from "gsap/InertiaPlugin";
 gsap.registerPlugin(Draggable, InertiaPlugin);
 
 function init() {
-const elements = document.querySelectorAll(".dragElement");
-const container = document.querySelector(".dragContainer");
 
-gsap.registerPlugin(Draggable);
+  const elements = document.querySelectorAll(".dragElement");
+  const container = document.querySelector(".dragContainer");
 
-elements.forEach((element) => {
-Draggable.create(element, {
-  bounds: container,
-  edgeResistance: 0.5,
-  type: "y,x",
-  inertia: true,
-  startPosition: { x: 0, y: 0 }, // Set the initial position here
-  onDrag: function () {
-    const rotation = (this.x / container.offsetWidth) * 180;
-    gsap.to(element, {
-      rotation: rotation,
-      immediateRender: false,
-    });
-  },
-});
-});
+  gsap.registerPlugin(Draggable);
+
+  elements.forEach((element) => {
+  Draggable.create(element, {
+    bounds: container,
+    edgeResistance: 0.5,
+    type: "y,x",
+    inertia: true,
+    startPosition: { x: 0, y: 0 }, // Set the initial position here
+    onDrag: function () {
+      const rotation = (this.x / container.offsetWidth) * 180;
+      gsap.to(element, {
+        rotation: rotation,
+        immediateRender: false,
+      });
+    },
+  });
+  });
+  
 }
 
-if (document.readyState === "complete") {
-init();
-} else {
-document.addEventListener("DOMContentLoaded", () => init());
+
+const setup = () => {
+  document.readyState === 'complete' ? init() : document.addEventListener("DOMContentLoaded", init);
+  window.swup?.hooks.on('page:view', init);
 }
+
+window.swup ? setup() : document.addEventListener('swup:enable', setup);
+
+
+
 </script>
