@@ -18,6 +18,15 @@ const { blok } = Astro.props
 
         </h1>
 
+        {blok.Text && 
+            <div class="grid grid-cols-12 mt-12">
+                <div class="col-span-5">
+                    <p class={`text-md`}>{blok.Text}</p>
+                </div>
+            </div>
+        }
+        
+
     </div>
 
 </div> 

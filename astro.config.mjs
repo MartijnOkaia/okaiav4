@@ -70,10 +70,12 @@ export default defineConfig({
     }),
     tailwind(),
     sitemap(),
-    // swup({ 
-    //   theme: false, 
-    //   globalInstance: true 
-    // })
+    swup({ 
+      theme: 'fade',
+      globalInstance: true,
+      containers: ['main'],
+      native: true
+    })
   ],
   vite: {
     plugins: [basicSsl()],
